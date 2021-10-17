@@ -18,51 +18,67 @@
 
 <body>
 
-  <header>
+  <header class="visible-header">
     <div class="container">
-      <button class="nav-btn" >
+      <button class="nav-btn visible-header-btn" type="button">
         <span class="material-icons">menu</span>
       </button>
-      <a href="./" class="main">MUSICOLOGY♪</a>
-      <button class="menu-btn">음악학</button>
-      <button class="menu-btn">문헌</button>
+      <a href="./" class="logo">MUSICOLOGY♪</a>
+      <button class="menu-btn" type="menu">음악학</button>
+      <button class="menu-btn" type="menu">문헌</button>
       <div class="search">
         <span class="material-icons search-btn">search</span>
         <input type="text" placeholder="당신이 원하는 책을 검색하세요">
       </div>
       <div class="personal-information">
-        <button class="personal-btn">
+        <button class="personal-btn" type="button">
           <span class="material-icons">person</span>
         </button>
-        <button class="personal-btn">
-          <span class="material-icons" >favorite</span>
+        <button class="personal-btn" type="button">
+          <span class="material-icons">favorite</span>
         </button>
-        <button class="personal-btn">
+        <button class="personal-btn" type="button">
           <span class="material-icons">bookmarks</span>
         </button>
       </div>
-
     </div>
+  </header>
+
+  <header class="transparent-header">
+    <div class="container">
+      <button class="nav-btn transparent-header-btn" type="button">
+        <span class="material-icons">menu</span>
+      </button>
   </header>
 
   <nav class="nav">
     <div class="container">
-      <button class="close-btn">
+      <button class="close-btn" type="button">
         <span class="material-icons">close</span>
       </button>
       <div class="nav-menu">
-        <a href="./" class="main">MUSICOLOGY♪</a>
+        <a href="./" class="logo">MUSICOLOGY♪</a>
       </div>
     </div>
   </nav>
-
-
+<main>
   <section>
     <div class="container">
       <div class="bg"><img src="./img/bg-circle.png" alt="bg"></div>
-      
+      <div class="video-container">
+        <div class="video-wrapper"></div>
+        <video type="mp4" autoplay loop muted>
+          <source src="./img/bg-video.mp4">
+        </video>
+      </div>
+      <span class="text-main">음악학은 여러분과 함께합니다!</span>
     </div>
   </section>
+
+
+
+</main>
+
 
 
 
