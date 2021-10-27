@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
   <meta charset="UTF-8">
@@ -7,48 +7,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Musicology</title>
 
-  <link rel="stylesheet" href="./main.css">
+  <link rel="stylesheet" href="./public/main.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;600;900&display=swap" rel="stylesheet">
-  <script defer src="./main.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+  <script defer src="./public/main.js"></script>
+
 
 </head>
 
 <body>
 
-  <header class="visible-header">
+  <header>
     <div class="container">
-      <button class="nav-btn visible-header-btn" type="button">
+      <button class="nav-btn" type="button">
         <span class="material-icons">menu</span>
       </button>
-      <a href="./" class="logo">MUSICOLOGY♪</a>
-      <button class="menu-btn" type="menu">음악학</button>
-      <button class="menu-btn" type="menu">문헌</button>
-      <div class="search">
-        <span class="material-icons search-btn">search</span>
-        <input type="text" placeholder="당신이 원하는 책을 검색하세요">
-      </div>
-      <div class="personal-information">
-        <button class="personal-btn" type="button">
-          <span class="material-icons">person</span>
-        </button>
-        <button class="personal-btn" type="button">
-          <span class="material-icons">favorite</span>
-        </button>
-        <button class="personal-btn" type="button">
-          <span class="material-icons">bookmarks</span>
-        </button>
+      <div class="visible">
+        <a href="./" class="logo">MUSICOLOGY♪</a>
+        <button class="more-contents" type="menu">음악학</button>
+        <button class="more-contents" type="menu">문헌</button>
+        <div class="search">
+          <span class="material-icons search-btn">search</span>
+          <input type="text" placeholder="당신이 원하는 책을 검색하세요">
+        </div>
+        <div class="personal-information">
+          <button class="personal-btn" type="button">
+            <span class="material-icons">person</span>
+          </button>
+          <button class="personal-btn" type="button">
+            <span class="material-icons">favorite</span>
+          </button>
+          <button class="personal-btn" type="button">
+            <span class="material-icons">bookmarks</span>
+          </button>
+        </div>
       </div>
     </div>
-  </header>
-
-  <header class="transparent-header">
-    <div class="container">
-      <button class="nav-btn transparent-header-btn" type="button">
-        <span class="material-icons">menu</span>
-      </button>
   </header>
 
   <nav class="nav">
@@ -61,25 +59,61 @@
       </div>
     </div>
   </nav>
-<main>
-  <section>
-    <div class="container">
-      <div class="bg"><img src="./img/bg-circle.png" alt="bg"></div>
+
+
+
+  <main>
+    <section class="section1">
+      <div class="text-container">
+        <div class="text-inner"><span class="text">Hello World!</span></div>
+      </div>
+
       <div class="video-container">
-        <div class="video-wrapper"></div>
-        <video type="mp4" autoplay loop muted>
-          <source src="./img/bg-video.mp4">
+        <video type="mp4" autoplay loop muted preload="metadata">
+          <source src="./public/img/bg-video.mp4">
         </video>
       </div>
-      <span class="text-main">음악학은 여러분과 함께합니다!</span>
-    </div>
-  </section>
+
+
+    </section>
+
+    <section class="section2">
+      <div class="container">
+        <div class="card-box">
+          <div class='title-container'>
+            <span class="title">Around Musicology</span>
+            <span class="contents">Our Field</span>
+          </div>
+          <div class="card-grid">
+            <div class="card">History</div>
+            <div class="card">Theory</div>
+            <div class="card">Anthropology</div>
+            <div class="card">etc</div>
+          </div>
+        </div>
+        <div class="books">
+          <span>Recommend BOOKS</span>
+          <div class="container">
+            <div class="book-tray"></div>
+            <div class="book-tray"></div>
+            <div class="book-tray"></div>
+            <div class="book-tray"></div>
+            <div class="book-tray"></div>
+            <div class="book-tray"></div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+
+  </main>
 
 
 
-</main>
-
-
+  <footer>
+    헿 포트폴리오 끝
+  </footer>
 
 
 </body>
