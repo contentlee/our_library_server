@@ -12,8 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;600;900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Lobster&family=Permanent+Marker&display=swap" rel="stylesheet">
   <script defer src="./public/main.js"></script>
 
 
@@ -27,7 +26,7 @@
         <span class="material-icons">menu</span>
       </button>
       <div class="visible">
-        <a href="./" class="logo">MUSICOLOGY♪</a>
+        <a href="./views/library.ejs" class="logo">MUSICOLOGY♪</a>
         <button class="more-contents" type="menu">음악학</button>
         <button class="more-contents" type="menu">문헌</button>
         <div class="search">
@@ -57,6 +56,27 @@
       <div class="nav-menu">
         <a href="./" class="logo">MUSICOLOGY♪</a>
       </div>
+      <ul>
+        <li class="subject-title">ABOUT
+          <ul>
+            <li>History</li>
+            <li>Theory</li>
+            <li>Anthropology</li>
+            <li>ect</li>
+          </ul>
+        </li>
+        <li class="subject-title">Library
+          <ul>
+            <li>ALL</li>
+            <li>GENERAL MUSICOLOGY</li>
+            <li>HISTORY AND BIOGRAPHY</li>
+            <li>MUSIC AND CULTURE</li>
+            <li>MUSIC THEORY</li>
+            <li>ESSENTIAL REFERENCES</li>
+          </ul>
+        </li>
+        
+      </ul>
     </div>
   </nav>
 
@@ -65,7 +85,12 @@
   <main>
     <section class="section1">
       <div class="text-container">
-        <div class="text-inner"><span class="text">Hello World!</span></div>
+        <div class="text-inner">
+          <span class="text1">Hello World!</span>
+          <span class="text2">Welcome to<br>Musicology Introduction page!</span>
+          <span class="text3">MUSICOLOGY</span>
+          <img src="./public/img/bg-circle.png" alt="#" class="bgcircle">
+        </div>
       </div>
 
       <div class="video-container">
@@ -92,16 +117,66 @@
           </div>
         </div>
         <div class="books">
-          <span>Recommend BOOKS</span>
-          <div class="container">
-            <div class="book-tray"></div>
-            <div class="book-tray"></div>
-            <div class="book-tray"></div>
-            <div class="book-tray"></div>
-            <div class="book-tray"></div>
-            <div class="book-tray"></div>
+          <div class='title-container'>
+            <span class="title">Recommend BOOKS</span>
           </div>
-          
+          <div class="btn-container">
+            <button class="next">
+              <span class="material-icons ">arrow_forward</span>
+            </button>
+            <button class="previous">
+              <span class="material-icons ">arrow_back</span>
+            </button>
+
+          </div>
+          <div class="container" id="container">
+            <div class="book-tray">
+              <img class="book-img" src="" alt="없어요">
+              <div class="book-title">Disciplining Music </div>
+              <div class="book-subtitle"> : Musicology and its Canons</div>
+              <div class="book-author">Bergeron, Katherine and Philip Bohlman</div>
+              <div class="book-publish">the university of chicago press</div>
+              <div class="book-date">1996</div>
+              <div class="subject">general musicology</div>
+            </div>
+            <div class="book-tray">
+              <img class="book-img" src="http://image.yes24.com/momo/TopCate32/MidCate08/3175439.jpg" alt="">
+              <div class="book-title">Disciplining Musiczzzzzzzzzzzzzzzzzzz </div>
+              <div class="book-subtitle"> : Musicology and its Canonszzzzzzzzzzzzzzzzzz</div>
+              <div class="book-author">Bergeron, Katherine and Philip Bohlmanzzzzzzzzzzzzzzzzz</div>
+              <div class="book-publish">the university of chicago presszzzzzzzzzzzz</div>
+              <div class="book-date">1996</div>
+              <div class="subject">general musicology</div>
+            </div>
+            <div class="book-tray">
+              <img class="book-img" src="http://image.yes24.com/momo/TopCate32/MidCate08/3175439.jpg" alt="">
+              <div class="book-title">Disciplining Music </div>
+              <div class="book-subtitle"> : Musicology and its Canons</div>
+              <div class="book-author">Bergeron, Katherine and Philip Bohlman</div>
+              <div class="book-publish">the university of chicago press</div>
+              <div class="book-date">1996</div>
+              <div class="subject">general musicology</div>
+            </div>
+            <div class="book-tray">
+              <img class="book-img" src="http://image.yes24.com/momo/TopCate32/MidCate08/3175439.jpg" alt="">
+              <div class="book-title">Disciplining Music </div>
+              <div class="book-subtitle"> : Musicology and its Canons</div>
+              <div class="book-author">Bergeron, Katherine and Philip Bohlman</div>
+              <div class="book-publish">the university of chicago press</div>
+              <div class="book-date">1996</div>
+              <div class="subject">general musicology</div>
+            </div>
+            <div class="book-tray">
+              <img class="book-img" src="http://image.yes24.com/momo/TopCate32/MidCate08/3175439.jpg" alt="">
+              <div class="book-title">Disciplining Music </div>
+              <div class="book-subtitle"> : Musicology and its Canons</div>
+              <div class="book-author">Bergeron, Katherine and Philip Bohlman</div>
+              <div class="book-publish">the university of chicago press</div>
+              <div class="book-date">1996</div>
+              <div class="subject">general musicology</div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -112,7 +187,9 @@
 
 
   <footer>
-    헿 포트폴리오 끝
+    <div class="title-container">
+      <span>MUSICOLOGY</span>
+    </div>
   </footer>
 
 
