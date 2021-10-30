@@ -32,3 +32,19 @@ function header() {
 };
 
 document.addEventListener('scroll', header);
+
+
+$('.delete').click(function (e) {
+  var idvalue = e.target.dataset.id;
+  var click = $(this);
+  $.ajax({
+   method : 'DELETE',
+   url : '/delete',
+   data : { _id : idvalue}
+  }).done(function(result){
+    click.parents('.book-card').hide;
+    console.log("del complete")
+  }).fail(function(xhr,code,err){
+    console.log(xhr,code,err)
+  })
+})
