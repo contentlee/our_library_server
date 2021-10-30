@@ -16,10 +16,13 @@ MongoClient.connect('mongodb+srv://musicology:musicology@cluster0.sagsv.mongodb.
   db = client.db('musicology')
   app.use('/public', express.static('public'))
   app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/index.ejs')
+    res.sendFile(__dirname + '/index.html')
   })
-  app.get('/admin-library', function (req, res) {
-    res.render('admin-library.ejs')
+
+
+
+  app.get('/library', function (req, res) {
+    res.render('library.ejs')
   })
 
   app.listen(3080, function () {
@@ -48,15 +51,15 @@ app.post('/add', function (req, res) {
       console.log('save complete')
       db.collection('counter').updateOne({name: '게시물총갯수'}, {$inc: {totalPost: 1}}, function (error, result) {
         if (error) {return console.log(error)}
-        res.redirect('/admin-library');
+        res.redirect('/library');
       })
     })
   })
 });
 
-app.get('/admin-library', function (req, res) {
+app.get('/library', function (req, res) {
   db.collection('books').find().toArray(function (error, result) {
-    res.render('admin-library.ejs', {books: result})
+    res.render('library.ejs', {books: result})
   })
 })
 
@@ -71,15 +74,16 @@ app.delete('/delete', function(req, res){
 
 app.get('/library/:id', function(req, res){
   db.collection('books').findOne({_id : parseInt(req.params.id)}, function(error, result){
-    res.render('book-detail.ejs', {books: result} )
+    res.render('library-detail.ejs', {books: result} )
   })
 })
 
 
-app.get('/admin-library/edit/:id', function(req, res){
+app.get('/library/edit/:id', function(req, res){
   db.collection('books').findOne({_id : parseInt(req.params.id)}, function(error, result){
     res.render('edit.ejs', {books: result})
+    db.collection('books').updateOne({
+      
+    })
   })
 })
-
-app.post

@@ -161,15 +161,16 @@ nav {
 .nav-menu {
   display: inline-block;
 }
-.subject-title{
-  font-family: 'Noto Serif KR', serif; 
+
+.subject-title {
+  font-family: 'Noto Serif KR', serif;
   margin: 30px;
   font-weight: 900;
   font-size: 30px;
   list-style: none;
 }
 
-.subject-title>ul>li{
+.subject-title>ul>li {
   font-weight: 600;
   font-size: 16px;
   list-style: none;
@@ -177,38 +178,134 @@ nav {
 }
 
 
+.section1 .container {
+  min-height: 70vh;
+
+}
+
+.category-inner1 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-weight: 600;
+  padding: 100px 100px 0;
+}
+
+.category-inner1>span {
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.category-inner2 {
+  position: relative;
+  padding: 10px;
+
+}
+
+.category-inner2>select {
+  position: absolute;
+  width: 150px;
+  right: 100px;
+}
 
 
 
-.section2{
-  width: 100%;
+.book-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  padding-top: 10vh;
+}
+
+.book-card {
+  position: relative;
+  text-align: center;
+  width: 40vw;
+  height: 30vh;
+}
+
+.book-card:hover .book-img {
+  filter: blur(5px);
+  z-index: -1;
+}
+
+.book-card:hover .book-info {
+  display: block;
+}
+
+.book-img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  transition: all .2s;
+}
+
+.book-img .img>img {
+  height: 30vh;
+}
+
+.book-info {
+  display: none;
+  transition: all .2s;
+}
+
+.book-info .title {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.book-info>button {
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+}
+
+
+
+
+.section2 {
+  position: relative;
   display: flex;
   justify-content: center;
-}
-
-.section2>form{
-  width: 400px;
-  height: 1000px;
+  width: 100%;
+  height: 120vh;
+  margin-bottom: 50px;
   font-family: 'Noto Serif KR', serif;
-  font-weight: 600;
+}
+
+.section2>form {
+  position: absolute;
+  box-sizing: border-box;
+  width: 50%;
+  height: 100%;
+  padding: 5%;
   background-color: rgba(0, 0, 0, .4);
+  border-radius: 10px;
   text-align: center;
-  padding: 10px 0;
-}
-.section2>form span{
-  font-size: 16px;
 }
 
-.title-wrap{
+.section2>form>span{
+  font-size: 24px;
+  font-weight: 900;
+  margin-bottom: 30px;
 }
-.title-wrap>div input{
-  width: 300px;
+.section2>form>div>span{
+  margin-top: 10px;
+  font-weight: 600;
+}
+.section2>form>div>input{
+  width: 200px;
+}
+
+.submit>input{
+  height: 30px;
+  margin: 10px 0;
+  background-color: #fff;
   border: none;
-  border-radius: 3px;
-  margin: 10px;
 }
-
-
 
 
 
@@ -229,4 +326,3 @@ footer {
   color: #fff;
 
 }
-

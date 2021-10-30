@@ -63,68 +63,8 @@
             <button class="delete" data-id="<%= books[i]._id %>">삭제</button>
           </div>
           <% } %>
-
-
-
-
         </div>
       </div>
-    </section>
-
-
-
-
-
-    <section class="section2">
-      <form action="/add" method="post">
-        <div class="title-wrap">
-          <div class="title">
-            <span>제목</span>
-            <input type="text" name="title">
-          </div>
-          <div class="subtitle">
-            <span>부제목</span>
-            <input type="text" name="subtitle">
-          </div>
-        </div>
-
-        <div class="author">
-          <span>작가</span>
-          <input type="text" name="author">
-        </div>
-        <div class="date">
-          <span>출판연도</span>
-          <input type="month" name="date">
-        </div>
-        <div class="publish">
-          <span>출판사</span>
-          <input type="text" name="publish">
-        </div>
-        <div class="category">
-          <span>분류</span>
-          <input type="radio" name="category" value="GENERAL MUSICOLOGY">GENERAL MUSICOLOGY
-          <input type="radio" name="category" value="HISTORY AND BIOGRAPHY">HISTORY AND BIOGRAPHY
-          <input type="radio" name="category" value="MUSIC AND CULTURE">MUSIC AND CULTURE
-          <input type="radio" name="category" value="MUSIC THEORY">MUSIC THEORY
-          <input type="radio" name="category" value="ESSENTIAL REFERENCES">ESSENTIAL REFERENCES
-        </div>
-        <div class="img">
-          <span>이미지</span>
-          <input type="file" name="img">
-        </div>
-        <div class="about">
-          <span>상세정보</span>
-          <input type="textarea" name="about">
-        </div>
-        <div class="purchase">
-          <span>구매처</span>
-          <input type="url" name="purchase">
-        </div>
-
-        <div class="submit">
-          <input type="submit" name="submit">
-        </div>
-      </form>
     </section>
   </main>
 
@@ -137,23 +77,6 @@
   </footer>
 
 
-  <script>
-
-    $('.delete').click(function (e) {
-      var idvalue = e.target.dataset.id;
-      var click = $(this);
-      $.ajax({
-       method : 'DELETE',
-       url : '/delete',
-       data : { _id : idvalue}
-      }).done(function(result){
-        click.parents('.book-card').hide;
-        console.log("del complete")
-      }).fail(function(xhr,code,err){
-        console.log(xhr,code,err)
-      })
-    })
-  </script>
 
 </body>
 
