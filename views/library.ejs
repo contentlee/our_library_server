@@ -61,20 +61,30 @@
               <span class="date"><%= books[i].연도 %></span>
               <span class="publish"><%= books[i].출판사 %></span>
               <span class="group"><%= books[i].분류 %></span>
-              <button class="delete" data-id="<%= books[i]._id %>">삭제</button>
             </a>
+            <div class="btn-container">
+              <button class="edit"  onclick="location.href = '/library/edit/<%= books[i]._id %>'" >수정</button>
+              <button class="delete" data-id="<%= books[i]._id %>">삭제</button>
+            </div>
+
           </div>
           <% } %>
         </div>
       </div>
     </section>
 
+
+    <div class="add-inner">
+      <span class="add-book">ADD BOOK</span>
+    </div>
+
     <section class="section2">
+      
       <form action="/add" method="post">
         <span class="form-title">ADD BOOKS</span>
         <div class="title">
           <span>제목</span>
-          <input type="text" name="title">
+          <input type="text" name="title" required>
         </div>
         <div class="subtitle">
           <span>부제목</span>
@@ -106,15 +116,14 @@
           <span>이미지</span>
           <input type="url" name="img">
         </div>
-        <div class="about">
-          <span>상세정보</span>
-          <input type="textarea" name="about">
-        </div>
         <div class="purchase">
           <span>구매처</span>
           <input type="url" name="purchase">
         </div>
-
+        <div class="about">
+          <span>상세정보</span>
+          <textarea name="about" id="about" cols="30" rows="10"></textarea>
+        </div>
         <div class="submit">
           <input type="submit" name="submit">
         </div>

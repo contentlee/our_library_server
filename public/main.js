@@ -13,7 +13,6 @@ function header() {
   const header = document.querySelector('header');
   const visible = document.querySelector('.visible');
   let scrollheight = document.documentElement.scrollTop;
-  console.log(scrollheight)
   if (scrollheight > 0) {
     header.style.backgroundColor = 'transparent';
     visible.style.display = 'none';

@@ -15,7 +15,7 @@ function header() {
   const header = document.querySelector('header');
   const visible = document.querySelector('.visible');
   let scrollheight = document.documentElement.scrollTop;
-  console.log(scrollheight)
+
   if (scrollheight <=10){
     header.style.backgroundColor = '#fff';
     visible.style.display = 'flex';
@@ -33,16 +33,50 @@ function header() {
 
 document.addEventListener('scroll', header);
 
+// function search(){
+//   const button = document.querySelector('.search-btn')
+//   var searchingValue = document.querySelector('.search>input').value
+//   button.addEventListener('click', function(){
+//     window.location.href=`/search?value=${searchingValue}`
+//   })
+// };
+
+// search();
+
+function addBook(){
+  const btn = document.querySelector('.add-book')
+  const section = document.querySelector('.section2')
+  let counter = 0
+
+  btn.addEventListener('click', function(){
+    if (counter == 0){
+      section.style.display = 'flex'
+      counter++;
+    } else if (counter == 1){
+      section.style.display = 'none'
+      counter--;
+    }
+  })
+}
+
+addBook();
+
+$('.search-btn').click(function(){
+  var searchingValue = $('.search>input').val();
+  window.location.href='/search?value=' + searchingValue
+});
+
+
 
 $('.delete').click(function (e) {
   var idvalue = e.target.dataset.id;
-  var click = $(this);
+  var click = e.target;
   $.ajax({
    method : 'DELETE',
    url : '/delete',
    data : { _id : idvalue}
   }).done(function(result){
-    click.parents('.book-card').hide;
+    click.parents('.book-card').fadeout;
     console.log("del complete")
   }).fail(function(xhr,code,err){
     console.log(xhr,code,err)

@@ -5,6 +5,10 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.set('viewengine', 'ejs');
+const methodOverride = require('method-override')
+app.use(methodOverride('_method'))
+
+
 
 const MongoClient = require('mongodb').MongoClient;
 
@@ -82,8 +86,41 @@ app.get('/library/:id', function(req, res){
 app.get('/library/edit/:id', function(req, res){
   db.collection('books').findOne({_id : parseInt(req.params.id)}, function(error, result){
     res.render('edit.ejs', {books: result})
-    db.collection('books').updateOne({
-      
-    })
   })
 })
+
+
+app.put('/edit', function(req, res){
+  db.collection('books').updateOne({_id : parseInt(req.body.id) }, {$set : {
+    제목: req.body.title,
+    부제목: req.body.subtitle,
+    작가: req.body.author,
+    연도: req.body.date,
+    출판사: req.body.publish,
+    분류: req.body.category,
+    이미지: req.body.img,
+    상세정보: req.body.about,
+    구매처: req.body.purchase }}, 
+    function(error, result){
+      console.log('edit complete')
+      res.redirect('/library')
+    })
+  });
+
+
+  app.get('/search', function(req, res){
+    var 검색조건 = [
+      {
+        $search: {
+          index: 'default',
+          text: {
+            query: req.query.value,
+            path: ['제목', '부제목', '작가', '출판사']
+          }
+        }
+      }
+    ] 
+    db.collection('books').aggregate(검색조건).toArray(function(error, result){
+      res.render('search.ejs', {books: result})
+    })
+  })
