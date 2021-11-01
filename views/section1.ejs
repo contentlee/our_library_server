@@ -1,0 +1,45 @@
+<section class="section1">
+  <div class="container">
+    <div class="book-category">
+      <div class="category-inner1">
+        <a href="/library" class="all" data-name="ALL">ALL</a>
+        <a href="/GENERAL" data-name="GENERAL">GENERAL MUSICOLOGY</a>
+        <a href="/HISTORY" data-name="HISTORY">HISTORY AND BIOGRAPHY</a>
+        <a href="/CULTURE" data-name="CULTURE">MUSIC AND CULTURE</a>
+        <a href="/THEORY" data-name="THEORY">MUSIC THEORY</a>
+        <a href="/ESSENTIAL" data-name="ESSENTIAL">ESSENTIAL REFERENCES</a>
+      </div>
+      <div class="category-inner2">
+        <select name="sort" id="sort">
+          <option value=""></option>
+        </select>
+      </div>
+    </div>
+
+    <div class="book-list">
+
+      <% for(var i=0; i<books.length; i++){ %>
+      <div class="book-card">
+        <div class="book-img">
+          <div class="img">
+            <img src="<%= books[i].이미지 %>" alt="">
+          </div>
+        </div>
+        <a href="/library/<%= books[i]._id%>" class="book-info">
+          <span class="title"><%= books[i].제목 %></span>
+          <span class="subtitle"><%= books[i].부제목 %></span>
+          <span class="author"><%= books[i].작가 %></span>
+          <span class="date"><%= books[i].연도 %></span>
+          <span class="publish"><%= books[i].출판사 %></span>
+          <span class="group"><%= books[i].분류 %></span>
+        </a>
+
+        <button class="edit" onclick="location.href = '/library/edit/<%= books[i]._id %>'">수정</button>
+        <button class="delete" data-id="<%= books[i]._id %>">삭제</button>
+
+
+      </div>
+      <% } %>
+    </div>
+  </div>
+</section>

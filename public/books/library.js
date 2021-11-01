@@ -1,5 +1,3 @@
-
-
 function nav_btn(btn, name, style) {
   document.querySelector(btn).addEventListener('click', function () {
     document.querySelector(name).style.transform = style;
@@ -33,15 +31,7 @@ function header() {
 
 document.addEventListener('scroll', header);
 
-// function search(){
-//   const button = document.querySelector('.search-btn')
-//   var searchingValue = document.querySelector('.search>input').value
-//   button.addEventListener('click', function(){
-//     window.location.href=`/search?value=${searchingValue}`
-//   })
-// };
 
-// search();
 
 function addBook(){
   const btn = document.querySelector('.add-book')
@@ -60,6 +50,8 @@ function addBook(){
 }
 
 addBook();
+
+
 
 $('.search-btn').click(function(){
   var searchingValue = $('.search>input').val();
@@ -82,3 +74,4 @@ $('.delete').click(function (e) {
     console.log(xhr,code,err)
   })
 })
+

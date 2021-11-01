@@ -5,8 +5,6 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Musicology</title>
-
   <link rel="stylesheet" href="/public/books/library.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,24 +43,22 @@
 
         <div class="book-list">
 
-          <% for(let i=0; i<books.length; i++){ %>
           <div class="book-card">
             <div class="book-img">
               <div class="img">
-                <img src="<%= books[i].이미지 %>" alt="">
+                <img src="<%= books.이미지 %>" alt="">
               </div>
             </div>
             <div class="book-info">
-              <span class="title"><%= books[i].제목 %></span>
-              <span class="subtitle"><%= books[i].부제목 %></span>
-              <span class="author"><%= books[i].작가 %></span>
-              <span class="date"><%= books[i].연도 %></span>
-              <span class="publish"><%= books[i].출판사 %></span>
-              <span class="group"><%= books[i].분류 %></span>
+              <span class="title"><%= books.제목 %></span>
+              <span class="subtitle"><%= books.부제목 %></span>
+              <span class="author"><%= books.작가 %></span>
+              <span class="date"><%= books.연도 %></span>
+              <span class="publish"><%= books.출판사 %></span>
+              <span class="group"><%= books.분류 %></span>
             </div>
-            <button class="delete" data-id="<%= books[i]._id %>">삭제</button>
+            <button class="delete" data-id="<%= books._id %>">삭제</button>
           </div>
-          <% } %>
         </div>
       </div>
     </section>

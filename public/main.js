@@ -110,9 +110,6 @@ function booksbtn() {
       nowbook++;
       let translatevalue = -50 * nowbook;
       changeobj.style.transform = `translateX(${translatevalue}vw)`;
-
-      console.log(nowbook)
-
     }
 
   })
@@ -121,7 +118,6 @@ function booksbtn() {
       nowbook--;
       let translatevalue = -50 * nowbook;
       changeobj.style.transform = `translateX(${translatevalue}vw)`;
-      console.log(nowbook)
     }
   })
 

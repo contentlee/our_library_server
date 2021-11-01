@@ -198,7 +198,7 @@ nav {
   padding: 100px 100px 0;
 }
 
-.category-inner1>span {
+.category-inner1>a {
   margin: 0 10px;
   cursor: pointer;
 }
@@ -221,7 +221,7 @@ nav {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding-top: 10vh;
+  padding: 10vh 0;
 }
 
 .book-card {
@@ -240,6 +240,7 @@ nav {
   right: 0;
   left: 0;
   transition: all .2s;
+  z-index: -2;
 }
 
 .book-img .img>img {
@@ -248,18 +249,18 @@ nav {
 
 .book-card:hover .book-img {
   filter: blur(5px);
-  z-index: -2;
   opacity: 50%;
 }
 
 
 .book-info {
   position: absolute;
+  z-index: 2;
   right: 0;
   left: 0;
   display: none;
   transition: all .2s;
-  z-index: -1;
+
 }
 .book-card:hover .book-info {
   display: block;
@@ -272,16 +273,17 @@ nav {
 .btn-container{
   position: relative;
   height: 100%;
+
 }
 
-.btn-container>button{
+.book-card>button{
   display: none;
 }
-.book-card:hover> .btn-container>button {
+.book-card:hover>button {
   display: block;
   position: absolute;
   bottom: 0;
-  z-index: 3;
+  /* z-index: 3; */
 }
 .edit{
 

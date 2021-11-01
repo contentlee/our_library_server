@@ -88,18 +88,18 @@ header .container {
 }
 
 .more-contents {
+  padding: 0 2%;
   font-size: 18px;
   font-weight: 600;
-  padding: 0 2%;
 }
 
 
 .search {
   position: relative;
-  width: 40%;
-  padding: 0 15px;
   display: flex;
   align-items: center;
+  width: 40%;
+  padding: 0 15px;
 }
 
 .search .search-btn {
@@ -142,6 +142,7 @@ header .container {
 /* NAV */
 nav {
   position: fixed;
+  z-index: 5;
   width: 400px;
   height: 100vh;
   padding: 50px 0 50px 30px;
@@ -149,15 +150,11 @@ nav {
   background-color: #fff;
   transform: translateX(-50vw);
   transition: all .5s;
-  z-index: 5;
 }
-
-
 .close-btn {
   display: inline-block;
   margin-right: 50px;
 }
-
 .nav-menu {
   display: inline-block;
 }
@@ -168,7 +165,6 @@ nav {
   font-size: 30px;
   list-style: none;
 }
-
 .subject-title>ul>li{
   font-weight: 600;
   font-size: 16px;
@@ -185,9 +181,7 @@ nav {
   width: 100%;
   height: 4000px;
   padding-bottom: 50vh;
-
 }
-
 
 .text-container {
   position: absolute;
@@ -195,13 +189,12 @@ nav {
 }
 
 .text-inner {
-  width: 100%;
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-
+  width: 100%;
+  height: 100vh;
 }
 
 .text1 {
@@ -210,7 +203,6 @@ nav {
   font-family: 'Permanent Marker', cursive;
   font-size: 46px;
   opacity: 0;
-
 }
 
 .text2 {
@@ -246,10 +238,9 @@ nav {
 
 .video-container {
   position: absolute;
+  z-index: -3;
   width: 100%;
   height: 100%;
-  z-index: -3;
-  align-items: center;
 }
 
 .video-container>video {
@@ -265,10 +256,9 @@ nav {
 .section2 {
   position: relative;
   width: 100%;
-  height: 1150px;
   background-color: #fff;
   overflow: hidden;
-
+  padding-bottom: 5%;
 }
 
 
@@ -277,8 +267,6 @@ nav {
   background-color: #fff;
   text-align: center;
   font-family: 'Lobster', cursive;
-
-
 }
 
 .title {
@@ -294,13 +282,10 @@ nav {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   column-gap: 20px;
-
-
 }
 
 .card:first-child {
   background-image: url(./img/history.jpg);
-
 }
 
 .card:nth-child(2) {
@@ -319,7 +304,7 @@ nav {
   padding: 10px 5px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, .1);
   color: #fff;
-  height: 200px;
+  min-height: 200px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -332,11 +317,8 @@ nav {
     1px 1px 0 #000;
 }
 
-
-
 .books {
   padding: 5% 0;
-
 }
 
 .books>.title-container {
@@ -380,13 +362,13 @@ nav {
 }
 
 .book-tray {
+  float: left;
+  text-align: center;
   width: 50vw;
   height: 100%;
   font-family: 'Noto Serif KR', serif;
   font-weight: 600;
   text-overflow: ellipsis;
-  text-align: center;
-  float: left;
   overflow: hidden;
 }
 
@@ -408,18 +390,14 @@ nav {
 
 
 footer {
+  text-align: center;
+  box-sizing: border-box;
   width: 100%;
   height: 40vh;
   padding: 30px;
-  box-sizing: border-box;
   background-color: rgba(0, 0, 0, .4);
-  text-align: center;
+  color: #fff;
   font-family: 'Permanent Marker', cursive;
   font-size: 30px;
-  color: #fff;
-
 }
 
-
-
-/* background-color: #cc9999; */
