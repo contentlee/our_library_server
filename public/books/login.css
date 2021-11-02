@@ -1,0 +1,49 @@
+body{
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+}
+div, span{
+ box-sizing: border-box;
+}
+.login-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.login-inner{
+  padding: 50px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, .4);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.login-inner>span{
+  display: block;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 30px;
+  font-weight: 300;
+  color: #fff;
+  margin-bottom: 30px;
+}
+.login-inner>div{
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  font-size: 20px;  
+}
+.SUBMIT{
+  width: 100px;
+  height: 30px;
+  margin-top: 20px;
+  border: 1px solid rgba(0, 0, 0, .4);
+  border-radius: 10px;
+  background-color: #fff;
+}
+.SUBMIT:hover{
+  color: #fff;
+  background-color: rgba(0, 0, 0, .4);
+  border: 1px solid #fff;
+}

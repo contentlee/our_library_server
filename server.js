@@ -8,7 +8,13 @@ app.set('viewengine', 'ejs');
 const methodOverride = require('method-override')
 app.use(methodOverride('_method'))
 
+const passport = require('passport');
+const LocalStrategy =require('passport-local').Strategy;
+const session = require('express-session');
 
+app.use(session({secret : '비밀코드', resave : true, saveUninitialized: false}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 const MongoClient = require('mongodb').MongoClient;
 
@@ -20,18 +26,24 @@ MongoClient.connect('mongodb+srv://musicology:musicology@cluster0.sagsv.mongodb.
   db = client.db('musicology')
   app.use('/public', express.static('public'))
   app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/index.html')
+    res.render('index.ejs')
   })
   app.get('/library', function (req, res) {
     res.render('library.ejs')
   })
-
-
   app.listen(3080, function () {
     console.log('listening on 3080')
   })
 
 });
+
+
+
+app.get('/', function (req, res){
+  db.collection('books').find().toArray(function (error, result) {
+    res.render('index.ejs', {books : result})
+  })
+})
 
 app.get('/library', function (req, res) {
   db.collection('books').find().toArray(function (error, result) {
@@ -173,3 +185,50 @@ app.get('/search', function (req, res) {
     })
   })
 })
+
+app.get('/login', function(req,res){
+  res.render('login.ejs')
+})
+
+app.post('/login',passport.authenticate('local', {failureRedirect : '/fail'}), function(req, res){
+  res.redirect('/')
+})
+passport.use(new LocalStrategy({
+  usernameField: 'id',
+  passwordField: 'pw',
+  session: true,
+  passReqToCallback: false,
+}, function (putID, putPW, done) {
+  db.collection('login').findOne({ id: putID }, function (error, result) {
+    if (error) return done(error)
+    if (!result) return done(null, false, { message: '존재하지 않는 아이디입니다' })
+    if (putPW == result.pw) {
+      return done(null, result)
+    } else {
+      return done(null, false, { message: '비밀번호 입력이 잘못되었습니다' })
+    }
+  })
+}));
+passport.serializeUser(function (user, done) {
+  done(null, user.id)
+});
+
+passport.deserializeUser(function (idname, done) {
+  db.collection('login').findOne({id: idname }, function (error, result) {
+    done(null, result)
+  })
+}); 
+
+
+
+function verifyID(req, res, next) {
+  if (req.user) {
+    next()
+  } else {
+    res.redirect('/login')
+  }
+}
+
+app.get('/mypage', verifyID , function (req, res) {
+  res.render('mypage.ejs')
+}) 

@@ -127,11 +127,11 @@ header .container {
 
 }
 
-.personal-btn>span {
+.personal-btn>a>span {
   padding: 10px;
 }
 
-.personal-btn>span:hover {
+.personal-btn>a>span:hover {
   border-radius: 50px;
   background-color: rgba(0, 0, 0, .1);
 }
@@ -341,8 +341,6 @@ nav {
   border-radius: 10px;
   cursor: pointer;
 }
-
-
 
 
 

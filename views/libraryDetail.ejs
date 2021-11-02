@@ -2,10 +2,15 @@
 <html>
 
 <head>
+
+  
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/public/books/library.css">
+  <title>LibraryDetail</title>
+
+
+  <link rel="stylesheet" href="/public/books/detail.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,7 +18,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Lobster&family=Permanent+Marker&display=swap"
     rel="stylesheet">
-  <script defer src="/public/books/library.js"></script>
+  <script defer src="/public/main.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
@@ -27,39 +32,31 @@
   <main>
     <section class="section1">
       <div class="container">
-        <div class="book-category">
-          <div class="category-inner1">
-            <span>ALL</span>
-            <span>GENERAL MUSICOLOGY</span>
-            <span>HISTORY AND BIOGRAPHY</span>
-            <span>MUSIC AND CULTURE</span>
-            <span>MUSIC THEORY</span>
-            <span>ESSENTIAL REFERENCES</span>
+        <div class="book-card">
+          <div class="book-img">
+            <div class="img">
+              <img src="<%= books.이미지 %>" alt="">
+            </div>
           </div>
-          <div class="category-inner2">
-            <label for=""></label>
+          <div class="book-info">
+            <span class="title"><%= books.제목 %></span>
+            <span class="subtitle"><%= books.부제목 %></span>
+            <span class="author"><%= books.작가 %></span>
+            <span class="date"><%= books.연도 %></span>
+            <span class="publish"><%= books.출판사 %></span>
+            <span class="group"><%= books.분류 %></span>
+            <div class="btn-container">
+              <button class="edit" onclick="location.href = '/library/edit/<%= books._id %>'">수정</button>
+              <button class="delete" data-id="<%= books._id %>">삭제</button></div>
           </div>
+
         </div>
 
-        <div class="book-list">
-
-          <div class="book-card">
-            <div class="book-img">
-              <div class="img">
-                <img src="<%= books.이미지 %>" alt="">
-              </div>
-            </div>
-            <div class="book-info">
-              <span class="title"><%= books.제목 %></span>
-              <span class="subtitle"><%= books.부제목 %></span>
-              <span class="author"><%= books.작가 %></span>
-              <span class="date"><%= books.연도 %></span>
-              <span class="publish"><%= books.출판사 %></span>
-              <span class="group"><%= books.분류 %></span>
-            </div>
-            <button class="delete" data-id="<%= books._id %>">삭제</button>
-          </div>
+        <div class="book-detail">
+          <span class="detail"></span>
+          <a href="<%= books.구매처 %>">구매하기</a>
         </div>
+
       </div>
     </section>
   </main>
