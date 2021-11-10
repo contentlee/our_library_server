@@ -15,7 +15,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Lobster&family=Permanent+Marker&display=swap"
     rel="stylesheet">
-  <script defer src="/public/main.js"></script>
+  <script defer src="/public/books/library.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
@@ -23,14 +23,13 @@
 
 <body>
 
-  <%- include ('header.ejs') %>
+  <%- include ('comp-header.ejs') %>
 
 
   <main>
 
     <section class="section2">
       <form action="/edit?_method=PUT" method="post">
-        <input type="text" value="<%= books._id%>" name="id" display="none">
         <span class="form-title">ADD BOOKS</span>
         <div class="title">
           <span>제목</span>

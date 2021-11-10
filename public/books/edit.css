@@ -147,7 +147,7 @@ nav {
   padding: 50px 0 50px 30px;
   box-sizing: border-box;
   background-color: #fff;
-  transform: translateX(-50vw);
+  transform: translateX(-150vw);
   transition: all .5s;
   z-index: 5;
 }
@@ -183,126 +183,13 @@ nav {
 
 }
 
-.category-inner1 {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  font-weight: 600;
-  padding: 100px 100px 0;
-}
-
-.category-inner1>span {
-  margin: 0 10px;
-  cursor: pointer;
-}
-
-.category-inner2 {
-  position: relative;
-  padding: 10px;
-
-}
-
-.category-inner2>select {
-  position: absolute;
-  width: 150px;
-  right: 100px;
-}
-
-
-
-.book-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding-top: 10vh;
-}
-
-.book-card {
-  position: relative;
-  text-align: center;
-  width: 40vw;
-  height: 30vh;
-}
-
-.book-card:hover .book-img {
-  filter: blur(5px);
-  z-index: -1;
-}
-
-.book-card:hover .book-info {
-  display: block;
-}
-
-.book-img {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  transition: all .2s;
-}
-
-.book-img .img>img {
-  height: 30vh;
-}
-
-.book-info {
-  position: absolute;
-  right: 0;
-  left: 0;
-  display: none;
-  transition: all .2s;
-}
-
-.book-info .title {
-  font-size: 24px;
-  font-weight: 600;
-}
-
-.book-info>button {
-  position: absolute;
-  bottom: 0;
-  z-index: 5;
-}
-.edit{
-  right: 50px;
-}
-.delete{
-  right: 10px;
-}
-
-.add-inner{
-  position: relative;
-  width: 100%;
-  height: 100px;
-  text-align: center;
-  
-}
-
-.add-book{
-
-  display: inline-block;
-  padding: 10px 20px;
-  border: 1px solid rgba(0, 0, 0, .4);
-  border-radius: 20px;
-  transition: all .2s;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.add-book:hover{
-  background-color: rgba(0, 0, 0, .4);
-  border: 1px solid transparent;
-  color: #fff;
-}
-
 
 .section2 {
   position: relative;
   display: flex;
   justify-content: center;
   width: 100%;
-  height: 120vh;
+  height: 130vh;
   margin-bottom: 50px;
   font-family: 'Noto Serif KR', serif;
   transition: all .2s;
@@ -313,7 +200,7 @@ nav {
   box-sizing: border-box;
   width: 50%;
   height: 100%;
-  padding: 5%;
+  padding: 10% 5% 5%;
   background-color: rgba(0, 0, 0, .4);
   border-radius: 10px;
   text-align: center;
@@ -358,4 +245,75 @@ footer {
   font-size: 30px;
   color: #fff;
 
+}
+
+
+@media screen and (max-width : 992px) {
+  .nav-btn {
+    padding-left: 3%;
+  }
+  
+  .nav-btn>span {
+    padding: 5px;
+  }
+  
+  .visible {
+    padding: 0 15% 0 15%;
+  }
+    
+  .more-contents {
+    display: none;
+  }
+  
+  
+  .search {
+    width: 45%;;
+  }
+  
+  
+  
+  .search>input {
+    padding-right: 30px;
+  }
+
+  .personal-information {
+    right: 3%;
+  }
+  
+  .personal-btn>a>span {
+    padding: 10px;
+  }
+
+  .section2>form {
+    width: 70%;
+  }
+  
+}
+
+
+
+
+
+@media screen and (max-width : 576px) {
+  
+  .logo {
+    font-size: 16px;
+  }  
+  .nav-btn {
+    padding-left: 5%;
+  }
+  .visible {
+    padding: 0 5% 0 15%;
+  }
+  .search {
+    width: 50%;;
+  }
+  
+  .personal-information {
+    display: none;
+    right: 3%;
+  }
+  .section2>form {
+    width: 100%;
+  }
 }

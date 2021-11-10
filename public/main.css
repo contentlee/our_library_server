@@ -88,19 +88,21 @@ header .container {
 }
 
 .more-contents {
-  padding: 0 2%;
   font-size: 18px;
   font-weight: 600;
+  padding: 0 2%;
 }
 
 
 .search {
   position: relative;
-  display: flex;
-  align-items: center;
   width: 40%;
   padding: 0 15px;
+  display: flex;
+  align-items: center;
 }
+
+
 
 .search .search-btn {
   position: absolute;
@@ -120,6 +122,9 @@ header .container {
   border-radius: 50px;
   background-color: rgba(0, 0, 0, .1);
 
+}
+.search>input:focus{
+  background-color: #fff;
 }
 
 .personal-information {
@@ -144,35 +149,41 @@ header .container {
 /* NAV */
 nav {
   position: fixed;
-  z-index: 5;
   width: 400px;
   height: 100vh;
   padding: 50px 0 50px 30px;
   box-sizing: border-box;
   background-color: #fff;
-  transform: translateX(-50vw);
+  transform: translateX(-150vw);
   transition: all .5s;
+  z-index: 5;
 }
+
+
 .close-btn {
   display: inline-block;
   margin-right: 50px;
 }
+
 .nav-menu {
   display: inline-block;
 }
-.subject-title{
-  font-family: 'Noto Serif KR', serif; 
+
+.subject-title {
+  font-family: 'Noto Serif KR', serif;
   margin: 30px;
   font-weight: 900;
   font-size: 30px;
   list-style: none;
 }
-.subject-title>ul>li{
+
+.subject-title>ul>li {
   font-weight: 600;
   font-size: 16px;
   list-style: none;
   cursor: pointer;
 }
+
 
 
 
@@ -305,7 +316,6 @@ nav {
 .card {
   padding: 10px 5px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, .1);
-  color: #fff;
   min-height: 200px;
   background-position: center;
   background-repeat: no-repeat;
@@ -317,6 +327,9 @@ nav {
     1px -1px 0 #000,
     -1px 1px 0 #000,
     1px 1px 0 #000;
+}
+.card>a{
+  color: #fff;
 }
 
 .books {
@@ -339,7 +352,7 @@ nav {
 .btn-container {
   position: absolute;
   width: 100vw;
-  height: 100vh;
+  height: 70%;
 
 }
 
@@ -403,3 +416,88 @@ footer {
   font-size: 30px;
 }
 
+
+
+@media screen and (max-width : 992px) {
+  .nav-btn {
+    padding-left: 3%;
+  }
+  
+  .nav-btn>span {
+    padding: 5px;
+  }
+  
+  .visible {
+    padding: 0 15% 0 15%;
+  }
+    
+  .more-contents {
+    display: none;
+  }
+  
+  
+  .search {
+    width: 45%;;
+  }
+  
+  
+  
+  .search>input {
+    padding-right: 30px;
+  }
+
+  .personal-information {
+    right: 3%;
+  }
+  
+  .personal-btn>a>span {
+    padding: 10px;
+  }
+
+  .text2 {
+    font-size: 30px;
+  }
+
+  .text3 {
+    font-size: 40px;
+  }
+
+
+
+  .book-tray {
+    height: 70%;
+    font-size: 14px;
+  }
+
+  .book-img {
+    height: 250px;
+  }
+
+  .book-title {
+    font-weight: 900;
+    font-size: 18px;
+  }
+}
+
+
+@media screen and (max-width : 576px) {
+  
+  .logo {
+    font-size: 16px;
+  }  
+  .nav-btn {
+    padding-left: 5%;
+  }
+  .visible {
+    padding: 0 5% 0 15%;
+  }
+  .search {
+    width: 50%;;
+  }
+  
+  .personal-information {
+    display: none;
+    right: 3%;
+  }
+  
+}

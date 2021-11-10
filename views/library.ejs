@@ -15,7 +15,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Lobster&family=Permanent+Marker&display=swap"
     rel="stylesheet">
-  <script defer src="/public/main.js"></script>
+  <script defer type="module" src="/public/books/library.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
@@ -23,12 +23,12 @@
 
 <body>
 
-  <%- include ('header.ejs') %>
+  <%- include ('comp-header.ejs') %>
 
 
   <main>
 
-    <%- include ('section1.ejs') %>
+    <%- include ('comp-section1.ejs') %>
 
     <div class="add-inner">
       <span class="add-book">ADD BOOK</span>
@@ -83,6 +83,7 @@
         <div class="submit">
           <input type="submit" name="submit">
         </div>
+        <input type="number" name="like" style="display:none">
       </form>
     </section>
   </main>

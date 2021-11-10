@@ -13,13 +13,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;600;900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Lobster&family=Permanent+Marker&display=swap" rel="stylesheet">
-  <script defer src="./public/main.js" type="module"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 </head>
 
 <body>
-  <%- include ('header.ejs') %>
+  <%- include ('comp-header.ejs') %>
 
   <main>
     <section class="section1">
@@ -49,10 +48,10 @@
             <span class="contents">Our Field</span>
           </div>
           <div class="card-grid">
-            <div class="card">History</div>
-            <div class="card">Theory</div>
-            <div class="card">Anthropology</div>
-            <div class="card">etc</div>
+            <div class="card"><a href="/HISTORY">History</a></div>
+            <div class="card"><a href="/THEORY">Theory</a></div>
+            <div class="card" ><a href="/CULTURE">Anthropology</a></div>
+            <div class="card"><a href="/library">etc</a></div>
           </div>
         </div>
         <div class="books">
@@ -69,7 +68,7 @@
 
           </div>
           <div class="container">
-            <% for(let i=0; i<6; i++) {%>
+           <% for(let i=0; i<6; i++) {%>
             <a class="book-tray"  href="/library/<%= books[i]._id%>">
               <img class="book-img" src="<%=books[i].이미지%>" alt="없어요">
               <div class="book-title"><%= books[i].제목%></div>
@@ -96,6 +95,7 @@
     </div>
   </footer>
 
+  <script type="module" src="./public/main.js" ></script>
 
   
 

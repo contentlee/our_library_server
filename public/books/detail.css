@@ -155,7 +155,7 @@ nav {
   padding: 50px 0 50px 30px;
   box-sizing: border-box;
   background-color: #fff;
-  transform: translateX(-50vw);
+  transform: translateX(-150vw);
   transition: all .5s;
   z-index: 5;
 }
@@ -204,7 +204,7 @@ nav {
   height: 400px;
   display: flex;
   flex-wrap: wrap;
-  margin-top: 100px;
+  margin-top: 120px;
 }
 
 .book-img {
@@ -212,7 +212,7 @@ nav {
 }
 
 .book-img .img>img {
-  max-height: 300px;
+  max-height: 280px;
 }
 
 .book-info {
@@ -230,10 +230,22 @@ nav {
 }
 
 .book-detail{
-  height: 500px;
   font-size: 18px;
   font-weight: 300;
   margin-bottom: 100px;
+  text-align: center;
+}
+.detail{
+  min-height: 200px;
+}
+.book-detail>a{
+  padding: 10px;
+  border-radius: 20px;
+  transition: all .3s;
+}
+.book-detail>a:hover{
+  background-color: rgba(0, 0, 0, .4);
+  color: #fff;
 }
 
 
@@ -254,5 +266,115 @@ footer {
   font-family: 'Permanent Marker', cursive;
   font-size: 30px;
   color: #fff;
+
+}
+
+
+
+
+
+@media screen and (max-width : 992px) {
+  .nav-btn {
+    padding-left: 3%;
+  }
+  
+  .nav-btn>span {
+    padding: 5px;
+  }
+  
+  .visible {
+    padding: 0 15% 0 15%;
+  }
+    
+  .more-contents {
+    display: none;
+  }
+  
+  
+  .search {
+    width: 45%;;
+  }
+  
+  
+  
+  .search>input {
+    padding-right: 30px;
+  }
+
+  .personal-information {
+    right: 3%;
+  }
+  
+  .personal-btn>a>span {
+    padding: 10px;
+  }
+
+
+  
+  .book-img {
+    margin:  0 30px;
+  }
+  
+  .book-img .img>img {
+    max-height: 300px;
+  }
+  
+  .book-info .title {
+    font-size: 24px;
+    font-weight: 900;
+  }
+  .book-detail{
+    font-size: 16px;
+
+  }
+
+  .book-detail{
+    padding: 0 20px;
+  }
+
+}
+@media screen and (max-width : 768px) {
+  .book-info {
+    font-size: 12px;
+  }
+  
+  .book-info .title {
+    font-size: 18px;
+  }
+  .book-detail{
+    font-size: 12px;
+  }
+}
+  
+
+@media screen and (max-width : 590px) {
+  
+  .logo {
+    font-size: 16px;
+  }  
+  .nav-btn {
+    padding-left: 5%;
+  }
+  .visible {
+    padding: 0 5% 0 15%;
+  }
+  .search {
+    width: 50%;;
+  }
+  
+  .personal-information {
+    display: none;
+    right: 3%;
+  }
+  .section2>form {
+    width: 100%;
+  }
+
+  
+  .book-card {
+    height: 600px;
+    justify-content: center;
+    align-items: center;
+  }
 
 }

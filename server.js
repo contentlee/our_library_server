@@ -105,7 +105,8 @@ app.post('/add', function (req, res) {
       분류: req.body.category,
       이미지: req.body.img,
       상세정보: req.body.about,
-      구매처: req.body.purchase
+      구매처: req.body.purchase,
+      좋아요: req.body.like
     }, function (error, result) {
       console.log('save complete')
       db.collection('counter').updateOne({
@@ -190,7 +191,16 @@ app.get('/login', function(req,res){
   res.render('login.ejs')
 })
 
-app.post('/login',passport.authenticate('local', {failureRedirect : '/fail'}), function(req, res){
+app.post('/join', function(req, res){
+  db.collection('login').insertOne({
+    id: req.body.id,
+    pw: req.body.pw}, function(error, result){
+      console.log('save complete')
+      res.redirect('/login')
+    })
+})
+
+app.post('/login',passport.authenticate('local', {failureRedirect : '/login'}), function(req, res){
   res.redirect('/')
 })
 passport.use(new LocalStrategy({
@@ -231,4 +241,7 @@ function verifyID(req, res, next) {
 
 app.get('/mypage', verifyID , function (req, res) {
   res.render('mypage.ejs')
-}) 
+})
+
+app.post('/like', verifyID, )
+

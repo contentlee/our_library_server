@@ -1,11 +1,13 @@
+
 function nav_btn(btn, name, style) {
   document.querySelector(btn).addEventListener('click', function () {
     document.querySelector(name).style.transform = style;
+    console.log('e')
   })
 };
 
 nav_btn(".nav-btn", ".nav", "translateX(0vw)");
-nav_btn(".close-btn", ".nav", "translateX(-50vw)");
+nav_btn(".close-btn", ".nav", "translateX(-150vw)");
 
 
 
@@ -26,6 +28,16 @@ function header() {
   }
 
 };
+
+function search(){
+  document.querySelector('.search-btn').addEventListener('click', function(){
+    var searchingValue = document.querySelector('.search>input').value;
+    window.location.href = '/search?value=' + searchingValue
+  })
+}
+search()
+
+
 
 function main() {
   const video = document.querySelector('.video-container>video')
@@ -85,16 +97,9 @@ function main() {
   if (scrollheight > 3600) {
     bgcircle.style.transform = `scale(5)`
   }
-
-
-
 }
 document.addEventListener('scroll', header);
 document.addEventListener('scroll', main);
-
-
-
-
 
 
 
@@ -125,57 +130,3 @@ function booksbtn() {
 booksbtn();
 
 
-$('.search-btn').click(function () {
-  var searchingValue = $('.search>input').val();
-  window.location.href = '/search?value=' + searchingValue
-});
-
-
-$('.delete').click(function (e) {
-  var idvalue = e.target.dataset.id;
-  var click = e.target;
-  $.ajax({
-    method: 'DELETE',
-    url: '/delete',
-    data: {
-      _id: idvalue
-    }
-  }).done(function (result) {
-    click.parent('.book-card').fadeout;
-    console.log("del complete")
-  }).fail(function (xhr, code, err) {
-    console.log(xhr, code, err)
-  })
-})
-
-
-
-
-function setCookie(cName, cValue, cDay) {
-  var expire = new Date();
-  expire.setDate(expire.getDate() + cDay);
-  cookies = cName + '=' + escape(cValue) + '; path=/ '; // 한글 깨짐을 막기위해 escape(cValue)를 합니다.
-  if (typeof cDay != 'undefined') cookies += ';expires=' + expire.toGMTString() + ';';
-  document.cookie = cookies;
-}
-
-// 쿠키 가져오기 함수
-function getCookie(cName) {
-  cName = cName + '=';
-  var cookieData = document.cookie;
-  var start = cookieData.indexOf(cName);
-  var cValue = '';
-  if (start != -1) {
-    start += cName.length;
-    var end = cookieData.indexOf(';', start);
-    if (end == -1) end = cookieData.length;
-    cValue = cookieData.substring(start, end);
-  }
-  return unescape(cValue);
-}
-
-//최초 한번만 띄우기 위함
-if (1 > 0 && getCookie("Reply") != "Y") {
-  alert("초과되었습니다");
-  setCookie("Reply", "Y", "1") //변수, 변수값, 저장기간
-}
