@@ -30,16 +30,25 @@ function header() {
 };
 
 function search(){
-  document.querySelector('.search-btn').addEventListener('click', function(){
-    var searchingValue = document.querySelector('.search>input').value;
+  const searchInput = document.querySelector('.search>input')
+  const searchBtn = document.querySelector('.search-btn')
+  searchBtn.addEventListener('click', function(){
+    const searchingValue = searchInput.value;
     window.location.href = '/search?value=' + searchingValue
   })
+  searchInput.addEventListener('keyup',function(){
+    if(window.event.keyCode == 13){
+      const searchingValue = searchInput.value;
+      window.location.href = '/search?value=' + searchingValue
+    }
+  })
 }
+
 search()
 
 
 
-function main() {
+function main() { 
   const video = document.querySelector('.video-container>video')
   let scrollheight = document.documentElement.scrollTop;
   let value = ((1 / 150) * scrollheight) - (10 / 3)
@@ -64,7 +73,7 @@ function main() {
   const bgcircle = document.querySelector('.bgcircle')
   let scale = ((1 / 200) * scrollheight) - 13
 
-
+ console.log(scrollheight)
   if (scrollheight < 300) {
     text1.style.opacity = `0`
   } else if (scrollheight >= 300) {
@@ -89,14 +98,6 @@ function main() {
     text2.style.opacity = `0`
   };
 
-  if (scrollheight < 2600) {
-    bgcircle.style.transform = `scale(0)`
-  } else if (scrollheight >= 2600) {
-    bgcircle.style.transform = `scale(${scale})`
-  }
-  if (scrollheight > 3600) {
-    bgcircle.style.transform = `scale(5)`
-  }
 }
 document.addEventListener('scroll', header);
 document.addEventListener('scroll', main);
@@ -128,5 +129,6 @@ function booksbtn() {
 
 };
 booksbtn();
+
 
 

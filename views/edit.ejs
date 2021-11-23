@@ -30,7 +30,8 @@
 
     <section class="section2">
       <form action="/edit?_method=PUT" method="post">
-        <span class="form-title">ADD BOOKS</span>
+        <span class="form-title">EDIT BOOKS</span>
+        <input type="text" name="id" value="<%= books._id %>" display="none">
         <div class="title">
           <span>제목</span>
           <input type="text" name="title" value="<%= books.제목 %>">

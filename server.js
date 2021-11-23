@@ -1,38 +1,38 @@
 const express = require('express');
 const app = express();
-const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
-app.set('viewengine', 'ejs');
-const methodOverride = require('method-override')
-app.use(methodOverride('_method'))
 
+const methodOverride = require('method-override')
 const passport = require('passport');
-const LocalStrategy =require('passport-local').Strategy;
+const LocalStrategy = require('passport-local').Strategy;
 const session = require('express-session');
 
-app.use(session({secret : '비밀코드', resave : true, saveUninitialized: false}));
+
+
+app.set('viewengine', 'ejs');
+app.use(express.urlencoded({extended: true}));
+app.use(methodOverride('_method'))
 app.use(passport.initialize());
+app.use(session({secret : '비밀코드', resave : true, saveUninitialized: false}));
 app.use(passport.session());
+
 
 const MongoClient = require('mongodb').MongoClient;
 
 var db
-MongoClient.connect('mongodb+srv://musicology:musicology@cluster0.sagsv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
-  useUnifiedTopology: true
-}, function (error, client) {
-  if (error) return console.log(error)
+MongoClient.connect('mongodb+srv://musicology:musicology@cluster0.sagsv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', 
+{useUnifiedTopology: true}, function (error, client) {
+  if (error) return console.log(error);
+
   db = client.db('musicology')
+
   app.use('/public', express.static('public'))
+
   app.get('/', function (req, res) {
-    res.render('index.ejs')
+    res.sendFile(__dirname + './view/index.ejs')
   })
-  app.get('/library', function (req, res) {
-    res.render('library.ejs')
-  })
-  app.listen(3080, function () {
-    console.log('listening on 3080')
+
+  app.listen(8080, function () {
+    console.log('listening on 8080')
   })
 
 });
@@ -137,7 +137,7 @@ app.delete('/delete', function (req, res) {
 
 })
 
-app.get('/library/edit/:id', function (req, res) {
+app.get('/edit/:id', function (req, res) {
   db.collection('books').findOne({
     _id: parseInt(req.params.id)
   }, function (error, result) {
@@ -163,7 +163,7 @@ app.put('/edit', function (req, res) {
         구매처: req.body.purchase
       }
     },
-    function (error, result) {
+    function (error, result){
       console.log('edit complete')
       res.redirect('/library')
     })
@@ -242,6 +242,4 @@ function verifyID(req, res, next) {
 app.get('/mypage', verifyID , function (req, res) {
   res.render('mypage.ejs')
 })
-
-app.post('/like', verifyID, )
 

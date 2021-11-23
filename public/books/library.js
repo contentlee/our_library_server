@@ -30,13 +30,21 @@ function header() {
 document.addEventListener('scroll', header);
 
 function search(){
-  document.querySelector('.search-btn').addEventListener('click', function(){
-    var searchingValue = document.querySelector('.search>input').value;
+  const searchInput = document.querySelector('.search>input')
+  const searchBtn = document.querySelector('.search-btn')
+  searchBtn.addEventListener('click', function(){
+    const searchingValue = searchInput.value;
     window.location.href = '/search?value=' + searchingValue
   })
+  searchInput.addEventListener('keyup',function(){
+    if(window.event.keyCode == 13){
+      const searchingValue = searchInput.value;
+      window.location.href = '/search?value=' + searchingValue
+    }
+  })
 }
-search()
 
+search()
 
 
 function addbtn(){

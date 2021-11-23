@@ -27,7 +27,6 @@
           <span class="text1">Hello World!</span>
           <span class="text2">Welcome to<br>Musicology Introduction page!</span>
           <span class="text3">MUSICOLOGY</span>
-          <img src="./public/img/bg-circle.png" alt="#" class="bgcircle">
         </div>
       </div>
 
@@ -58,15 +57,6 @@
           <div class='title-container'>
             <span class="title">Recommend BOOKS</span>
           </div>
-          <div class="btn-container">
-            <button class="next">
-              <span class="material-icons ">arrow_forward</span>
-            </button>
-            <button class="previous">
-              <span class="material-icons ">arrow_back</span>
-            </button>
-
-          </div>
           <div class="container">
            <% for(let i=0; i<6; i++) {%>
             <a class="book-tray"  href="/library/<%= books[i]._id%>">
@@ -79,7 +69,15 @@
               <div class="subject"><%= books[i].분류%></div>
             </a>
            <%}%>
+
+       
           </div>
+          <button class="next">
+            <span class="material-icons ">arrow_forward</span>
+          </button>
+          <button class="previous">
+            <span class="material-icons ">arrow_back</span>
+          </button>
         </div>
       </div>
     </section>
