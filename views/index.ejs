@@ -1,102 +1,98 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Musicology</title>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Musicology</title>
+    <link rel="stylesheet" type="text/css" href="../public/style/main.css" />
+    <link rel="stylesheet" type="text/css" href="../public/style/detail.css" />
+    <link rel="stylesheet" type="text/css" href="../public/style/edit.css" />
+    <link rel="stylesheet" type="text/css" href="../public/style/library.css" />
+    <link rel="stylesheet" type="text/css" href="../public/style/login.css" />
 
-  <link rel="stylesheet" href="./public/main.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;600;900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Lobster&family=Permanent+Marker&display=swap" rel="stylesheet">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;600;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Lobster&family=Permanent+Marker&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-</head>
+  <body>
+    <% if(path=="login"){ %>
+    <!--  -->
+    <%- include ('./page/login.ejs') %>
+    <!--  -->
+    <% } else {%>
+    <!--  -->
 
-<body>
-  <%- include ('comp-header.ejs') %>
+    <%- include ('./component/common/comp-header.ejs') %>
+    <!--  -->
+    <%- include ('./component/common/comp-nav.ejs') %>
+    <main>
+      <% if(path =="main"){ %>
+      <section class="main-section-a">
+        <%- include ('./component/main/comp-screen.ejs') %>
+      </section>
+      <section class="main-section-b">
+        <%- include ('./component/main/comp-book.ejs') %>
+      </section>
+      <% } %>
 
-  <main>
-    <section class="section1">
-      <div class="text-container">
-        <div class="text-inner">
-          <span class="text1">Hello World!</span>
-          <span class="text2">Welcome to<br>Musicology Introduction page!</span>
-          <span class="text3">MUSICOLOGY</span>
-        </div>
+      <!--  -->
+      <% if(path == "library"){ %>
+      <section class="library-section-a">
+        <%- include ('./component/library/comp-list.ejs') %>
+      </section>
+      <div class="add-btn-container">
+        <span class="add-btn">ADD BOOK</span>
       </div>
+      <section class="library-section-b">
+        <%- include ('./component/post/comp-add.ejs')%>
+      </section>
+      <% } %>
 
-      <div class="video-container">
-        <video type="mp4" autoplay loop muted preload="metadata">
-          <source src="./public/img/bg-video.mp4">
-        </video>
-      </div>
+      <!--  -->
+      <% if(path == "edit") { %>
+      <section class="edit-section">
+        <%- include ('./component/post/comp-edit.ejs') %>
+      </section>
+      <% } %>
 
+      <!--  -->
+      <% if(path == "detail"){ %>
+      <section class="detail-section">
+        <%- include ('./component/library/comp-detail.ejs') %>
+      </section>
+      <% }%>
 
-    </section>
+      <!--  -->
+      <% if(path == "favorite"){ %>
+      <div></div>
+      <% } %>
+    </main>
 
-    <section class="section2">
-      <div class="container">
-        <div class="card-box">
-          <div class='title-container'>
-            <span class="title">Around Musicology</span>
-            <span class="contents">Our Field</span>
-          </div>
-          <div class="card-grid">
-            <div class="card"><a href="/HISTORY">History</a></div>
-            <div class="card"><a href="/THEORY">Theory</a></div>
-            <div class="card" ><a href="/CULTURE">Anthropology</a></div>
-            <div class="card"><a href="/library">etc</a></div>
-          </div>
-        </div>
-        <div class="books">
-          <div class='title-container'>
-            <span class="title">Recommend BOOKS</span>
-          </div>
-          <div class="container">
-           <% for(let i=0; i<6; i++) {%>
-            <a class="book-tray"  href="/library/<%= books[i]._id%>">
-              <img class="book-img" src="<%=books[i].이미지%>" alt="없어요">
-              <div class="book-title"><%= books[i].제목%></div>
-              <div class="book-subtitle"><%= books[i].부제목%></div>
-              <div class="book-author"><%= books[i].작가%></div>
-              <div class="book-publish"><%= books[i].출판사%></div>
-              <div class="book-date"><%= books[i].연도%></div>
-              <div class="subject"><%= books[i].분류%></div>
-            </a>
-           <%}%>
+    <%- include ('./component/common/comp-footer.ejs') %>
 
-       
-          </div>
-          <button class="next">
-            <span class="material-icons ">arrow_forward</span>
-          </button>
-          <button class="previous">
-            <span class="material-icons ">arrow_back</span>
-          </button>
-        </div>
-      </div>
-    </section>
+    <!--  -->
+    <% } %>
 
-
-  </main>
-
-
-
-  <footer>
-    <div class="title-container">
-      <span>MUSICOLOGY</span>
-    </div>
-  </footer>
-
-  <script type="module" src="./public/main.js" ></script>
-
-  
-
-</body>
-
+    <script defer src="../public/main.js"></script>
+    <script defer src="../public/login.js"></script>
+  </body>
 </html>

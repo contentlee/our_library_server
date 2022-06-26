@@ -1,0 +1,72 @@
+.edit-section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 1000px;
+  margin-bottom: 50px;
+  font-family: "Noto Serif KR", serif;
+  transition: all 0.2s;
+}
+
+.edit-section > form {
+  position: absolute;
+  box-sizing: border-box;
+  width: 50%;
+  height: 950px;
+  padding: 10% 5% 5%;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.disable > div {
+  display: none;
+}
+
+.edit-section > form > span {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 900;
+  margin-bottom: 30px;
+}
+.edit-section > form > div > span {
+  color: rgba(0, 0, 0, 0.4);
+  margin-top: 10px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.edit-section > form > div > input {
+  width: 200px;
+  border: none;
+  border-radius: 10px;
+  padding: 0 10px;
+  height: 30px;
+}
+
+.edit-submit {
+  height: 30px;
+  margin: 20px 0;
+  color: rgba(0, 0, 0, 0.4);
+  background-color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.edit-submit:hover {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+@media screen and (max-width: 992px) {
+  .edit-section > form {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .edit-section > form {
+    width: 100%;
+  }
+}

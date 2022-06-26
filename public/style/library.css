@@ -1,0 +1,204 @@
+.library-section-a .container {
+  min-height: 70vh;
+}
+
+.category-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-weight: 600;
+  padding: 100px 100px 0;
+}
+
+.category-wrapper > a {
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.library-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10vh 0;
+}
+
+.book-wrapper {
+  position: relative;
+  text-align: center;
+  width: 40vw;
+  height: 200px;
+  margin: 20px 0;
+}
+
+.book-img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  transition: all 0.2s;
+  z-index: -2;
+}
+
+.book-img .img > img {
+  height: 180px;
+}
+
+.book-wrapper:hover .book-img {
+  filter: blur(5px);
+  opacity: 50%;
+}
+
+.book-info {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  left: 0;
+  display: none;
+  transition: all 0.2s;
+}
+
+.book-wrapper:hover .book-info {
+  display: block;
+}
+
+.book-info .title {
+  font-size: 24px;
+  font-weight: 600;
+}
+.library-wrapper > .btn-container {
+  position: relative;
+  height: 100%;
+}
+
+.book-wrapper > button {
+  display: none;
+}
+
+.book-wrapper:hover > button {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  /* z-index: 3; */
+}
+
+.book-wrapper:hover > .like {
+  display: block;
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+}
+
+.book-wrapper > .delete {
+  right: 0;
+}
+
+.add-btn-container {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  text-align: center;
+}
+
+.add-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  transition: all 0.2s;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.add-btn:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid transparent;
+  color: #fff;
+}
+
+.library-section-b {
+  position: relative;
+  display: none;
+  justify-content: center;
+  width: 100%;
+  height: 1000px;
+  margin-bottom: 50px;
+  font-family: "Noto Serif KR", serif;
+  transition: all 0.2s;
+}
+
+.library-section-b > form {
+  position: absolute;
+  box-sizing: border-box;
+  width: 50%;
+  height: 1000px;
+  padding: 5%;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.library-section-b > form > span {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 900;
+  margin-bottom: 30px;
+}
+.library-section-b > form > div > span {
+  margin-top: 10px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: rgba(0, 0, 0, 0.4);
+}
+.library-section-b > form > div > input {
+  width: 50%;
+  border: none;
+  border-radius: 10px;
+  padding: 0 10px;
+  height: 30px;
+}
+
+.add-submit {
+  height: 30px;
+  margin: 20px 0;
+  color: rgba(0, 0, 0, 0.4);
+  background-color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.add-submit:hover {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+@media screen and (max-width: 992px) {
+  .category-wrapper {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .library-wrapper > .book-info {
+    font-size: 12px;
+  }
+
+  .library-wrapper > .book-info .title {
+    font-size: 18px;
+  }
+
+  .library-section-b > form > div > input {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .library-section-b > form > div > input {
+    width: 90%;
+  }
+
+  .library-section-b > textarea {
+    width: 90%;
+  }
+}

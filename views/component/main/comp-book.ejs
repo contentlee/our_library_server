@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="card-box">
+    <div class="card-title-wrapper">
+      <span class="card-title">Around Musicology</span>
+      <span class="card-contents">Our Field</span>
+    </div>
+    <div class="card-grid">
+      <div class="card"><a href="/library/HISTORY">History</a></div>
+      <div class="card"><a href="/library/THEORY">Theory</a></div>
+      <div class="card"><a href="/library/CULTURE">Anthropology</a></div>
+      <div class="card"><a href="/library">etc</a></div>
+    </div>
+  </div>
+  <div class="cards-container">
+    <div class="card-title-wrapper">
+      <span class="card-title">Recommend BOOKS</span>
+    </div>
+    <div class="card-list-wrapper">
+      <% for(let i=0; i<2; i++) {%>
+      <a class="card-tray" href="/detail/<%=books[i]._id%>">
+        <img class="card-img" src="<%=books[i].이미지%>" alt="없어요" />
+        <div class="card-title"><%= books[i].제목%></div>
+        <div class="card-subtitle"><%= books[i].부제목%></div>
+        <div class="card-author"><%= books[i].작가%></div>
+        <div class="card-publish"><%= books[i].출판사%></div>
+        <div class="card-date"><%= books[i].연도%></div>
+        <div class="subject"><%= books[i].분류%></div>
+      </a>
+      <%}%>
+    </div>
+  </div>
+</div>
