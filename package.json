@@ -1,9 +1,10 @@
 {
-  "name": "portfolio",
+  "name": "our_library_server",
   "version": "1.0.0",
-  "description": "음악학이라는 학문 분야의 필수적인 도서들을 모아놓은 사이트입니다.\r <br>\r <br>\r <br>\r ## 1. 왜 MUSICOLOGY LIBRARY인가?\r  프론트 엔드 공부를 하며 공부한 것들을 정리하기 위해 무엇을 개발해야 할까라는 고민이 많았습니다. 그래서 제가 정한 개발 대상의 기준은 다음과 같았습니다.  \r  >첫번째, 어느정도 양의, 사용가능한 자료가 있어야 한다.  \r  >두번째, 개발하기 어렵지 않지만 기본적인 기술이 들어갈 수 있는 수준이어야 한다.  \r  >세번째, 쓸만은 해야 한다.",
-  "main": "server.js",
+  "description": "우리만 공유할 수 있는 작은 도서관입니다.",
+  "main": "app.js",
   "dependencies": {
+    "dotenv": "^16.0.3",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
@@ -18,16 +19,22 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/contentlee/musicology.git"
+    "url": "git+https://github.com/contentlee/our_library_server.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/contentlee/musicology/issues"
+    "url": "https://github.com/contentlee/our_library_server/issues"
   },
-  "homepage": "https://github.com/contentlee/musicology#readme"
+  "homepage": "https://github.com/contentlee/our_library_server#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.0",
+    "@babel/node": "^7.20.7",
+    "@babel/preset-env": "^7.20.2"
+  }
 }
