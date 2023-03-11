@@ -62,9 +62,7 @@ export class Library {
     return db
       .collection("books")
       .deleteOne({ _id: parseInt(id) })
-      .then(() => {
-        console.log("sucess delete");
-      })
+      .then((res) => res)
       .catch((err) => console.log(err));
   }
 
@@ -85,7 +83,9 @@ export class Library {
       .collection("books")
       .aggregate(condition)
       .toArray()
-      .then((res) => res)
+      .then((res) => {
+        return res;
+      })
       .catch(() => {
         console.log();
       });

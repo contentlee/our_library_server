@@ -5,7 +5,7 @@ export const getBooks = (req, res) => {
     .then((items) => {
       res.send(items);
     })
-    .catch((err) => console.log(err));
+    .catch((err) => res.send(err));
 };
 
 export const getBook = (req, res) => {
@@ -13,7 +13,7 @@ export const getBook = (req, res) => {
     .then((item) => {
       res.send(item);
     })
-    .catch((err) => console.log(err));
+    .catch((err) => res.send(err));
 };
 
 export const addBook = (req, res) => {
@@ -33,17 +33,20 @@ export const addBook = (req, res) => {
 
   book
     .createOne()
-    .then(() => {
-      res.send("success");
+    .then((item) => {
+      console.log(item);
+      res.send("해당 개체를 생성하였습니다.");
     })
-    .catch((err) => console.log(err));
+    .catch((err) => res.send(err));
 };
 
 export const deleteBook = (req, res) => {
   Library.deleteOne(req.params.id)
-    .then((item) => item)
+    .then(() => {
+      res.send("해당 개체를 삭제하였습니다.");
+    })
     .catch(() => {
-      console.log(err);
+      res.send(err);
     });
 };
 
@@ -63,10 +66,10 @@ export const editBook = (req, res) => {
   });
   book
     .editOne(req.params.id)
-    .then((item) => {
-      res.send("success");
+    .then(() => {
+      res.send("해당 개체를 수정하였습니다.");
     })
-    .catch((err) => console.log(err));
+    .catch((err) => res.send(err));
 };
 
 export const searchBooks = (req, res) => {
@@ -74,5 +77,5 @@ export const searchBooks = (req, res) => {
     .then((items) => {
       res.send(items);
     })
-    .catch((err) => console.log(err));
+    .catch((err) => res.send(err));
 };
