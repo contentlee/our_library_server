@@ -1,17 +1,19 @@
 import Favorite from "../models/favorite";
 import User from "../models/user";
 import jwt from "jsonwebtoken";
+import { encrypt } from "../utils/encrypt";
 
 export const signIn = (req, res) => {
   const user = new User(req.body);
   user
-    .findOne()
-    .then((data) => {
+    .findById()
+    .then(async (data) => {
       if (!data) return res.status(400).json({ message: "아이디가 존재하지 않습니다." });
       if (data.pwd !== encrypt(user.user_info.pwd))
         return res.status(400).json({ message: "비밀번호가 일치하지 않습니다." });
-
-      const token = jwt.sign({ user_id: data.user_id }, process.env.TOKEN_SECRET_KEY, { expiresIn: "1h" });
+      const token = jwt.sign({ user_id: data.user_id, user_name: data.user_name }, process.env.TOKEN_SECRET_KEY, {
+        expiresIn: "1h",
+      });
       return res.status(200).json({ token: token, message: "인증에 성공하였습니다." });
     })
     .catch(() => res.status(500).json({ message: "인증에 실패하였습니다." }));

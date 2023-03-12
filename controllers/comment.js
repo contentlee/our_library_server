@@ -15,7 +15,7 @@ export const getCommentsByUserId = (req, res) => {
 export const addComment = (req, res) => {
   const comment = new Comment({
     user_id: req.user_id,
-    user_name: req.body.user_name,
+    user_name: req.user_name,
     book_id: req.body.book_id,
     comment: req.body.comment,
     create_date: new Date(),
@@ -34,7 +34,7 @@ export const addComment = (req, res) => {
 };
 
 export const editComment = async (req, res) => {
-  const checked = await Comment.checkCommentIdByUserId(req.body.comment_id, req.user_id);
+  const checked = await Comment.checkCommentIdByUserId(req.params.comment_id, req.user_id);
   if (!checked[1]) return res.status([0]).json({ message: "데이터에 접근할 수 없습니다." });
 
   const comment = new Comment({
@@ -49,7 +49,7 @@ export const editComment = async (req, res) => {
 };
 
 export const deleteComment = async (req, res) => {
-  const checked = await Comment.checkCommentIdByUserId(req.body.comment_id, req.user_id);
+  const checked = await Comment.checkCommentIdByUserId(req.params.comment_id, req.user_id);
   if (!checked[1]) return res.status([0]).json({ message: "데이터에 접근할 수 없습니다." });
 
   Comment.deleteOne(req.params.comment_id)

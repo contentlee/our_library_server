@@ -14,5 +14,6 @@ export const auth = (req, res, next) => {
   }
 
   req.user_id = decodedToken.user_id;
+  req.user_name = decodedToken.user_name;
   next();
 };

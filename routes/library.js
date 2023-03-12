@@ -6,8 +6,9 @@ const router = Router();
 router.get("/library", getBooks);
 router.get("/library/search/:word", searchBooks);
 router.get("/library/detail/:id", getBook);
-router.post("/add", auth, addBook);
-router.put("/edit/:id", auth, editBook);
-router.delete("/delete/:id", auth, deleteBook);
+router.get("/library/edit/:id", auth, getBook);
+router.post("/library/add", auth, addBook);
+router.put("/library/edit/:id", auth, editBook);
+router.delete("/library/delete/:id", auth, deleteBook);
 
 export default router;

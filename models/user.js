@@ -18,8 +18,9 @@ class User {
       .catch(() => false);
   }
 
-  findOne() {
-    return this.db.collection("user").findOne({ user_id: this.user_info.user_id });
+  findById() {
+    const db = getDb();
+    return db.collection("user").findOne({ user_id: this.user_info.user_id });
   }
 
   async createOne() {

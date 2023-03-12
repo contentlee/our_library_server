@@ -27,8 +27,8 @@ export const addBook = (req, res) => {
     publisher: req.body.publisher,
     img: req.body.img,
     description: req.body.description,
-    user_id: req.body.user_id,
-    user_name: req.body.user_name,
+    user_id: req.user_id,
+    user_name: req.user_name,
     create_date: new Date(),
     edit_date: new Date(),
   });
@@ -59,8 +59,8 @@ export const editBook = async (req, res) => {
     publisher: req.body.publisher,
     img: req.body.img,
     description: req.body.description,
-    user_id: req.body.user_id,
-    user_name: req.body.user_name,
+    user_id: req.user_id,
+    user_name: req.user_name,
     create_date: req.body.create_date,
     edit_date: new Date(),
   });

@@ -11,7 +11,7 @@ import { auth } from "../midleware/auth";
 const router = Router();
 
 router.get("/comment/book/:book_id", getCommentsByBookId);
-router.get("/comment/user/:user_id", getCommentsByUserId);
+router.get("/comment/user", getCommentsByUserId);
 router.post("/comment/add", auth, addComment);
 router.put("/comment/edit/:comment_id", auth, editComment);
 router.delete("/comment/delete/:comment_id", auth, deleteComment);
