@@ -1,28 +1,12 @@
-const express = require("express");
+import { Router } from "express";
+import { changeUserName, changeUserPwd, signIn, signUp } from "../controllers/user";
+import { auth } from "../midleware/auth";
 
-const router = express.Router();
+const router = Router();
 
-router.get("/login", function (req, res) {
-  res.render("index.ejs", {
-    path: "login",
-  });
-});
-
-router.post("/join", function (req, res) {
-  db.collection("login").insertOne(
-    {
-      id: req.body.id,
-      pw: req.body.pw,
-    },
-    function (error, result) {
-      console.log("save complete");
-      res.redirect("/login");
-    }
-  );
-});
-
-router.post("/login", passport.authenticate("local", { failureRedirect: "/login" }), function (req, res) {
-  res.redirect("/");
-});
+router.post("/signin", signIn);
+router.post("/signup", signUp);
+router.post("/change/username", auth, changeUserName);
+router.post("/change/userpwd", auth, changeUserPwd);
 
 export default router;

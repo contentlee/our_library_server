@@ -1,23 +1,25 @@
 import { Library } from "../models/library";
 
 export const getBooks = (req, res) => {
-  Library.fetchAll()
-    .then((items) => {
-      res.send(items);
-    })
-    .catch((err) => res.send(err));
+  Library.findAll()
+    .then((data) => res.status(200).json({ message: "데이터를 가져오는데 성공했습니다.", data: data }))
+    .catch(() => res.status(500).json({ message: "데이터를 가져오는데 실패하였습니다." }));
 };
 
 export const getBook = (req, res) => {
   Library.findById(parseInt(req.params.id))
-    .then((item) => {
-      res.send(item);
-    })
-    .catch((err) => res.send(err));
+    .then((data) => res.status(200).json({ message: "데이터를 가져오는데 성공했습니다.", data: data }))
+    .catch(() => res.status(500).json({ message: "데이터를 가져오는데 실패하였습니다." }));
+};
+
+export const searchBooks = (req, res) => {
+  Library.findByWord(req.params.word)
+    .then((data) => res.status(200).json({ message: "데이터를 가져오는데 성공했습니다.", data: data }))
+    .catch(() => res.status(500).json({ message: "데이터를 가져오는데 실패하였습니다." }));
 };
 
 export const addBook = (req, res) => {
-  const book = new Library({
+  const library = new Library({
     title: req.body.title,
     subtitle: req.body.subtitle,
     author: req.body.author,
@@ -31,27 +33,25 @@ export const addBook = (req, res) => {
     edit_date: new Date(),
   });
 
-  book
-    .createOne()
-    .then((item) => {
-      console.log(item);
-      res.send("해당 개체를 생성하였습니다.");
+  library
+    .increaseCount()
+    .then((data) => {
+      library.info._id = data.value.count + 1;
+      library
+        .createOne()
+        .then(() => {
+          res.status(200).json({ message: "데이터 추가에 성공하였습니다." });
+        })
+        .catch(() => res.status(500).json({ message: "데이터 추가에 실패하였습니다." }));
     })
-    .catch((err) => res.send(err));
+    .catch(() => res.status(500).json({ message: "아이디 정보를 업데이트하는데 실패하였습니다." }));
 };
 
-export const deleteBook = (req, res) => {
-  Library.deleteOne(req.params.id)
-    .then(() => {
-      res.send("해당 개체를 삭제하였습니다.");
-    })
-    .catch(() => {
-      res.send(err);
-    });
-};
+export const editBook = async (req, res) => {
+  const checked = await Library.checkBookIdByUserId(req.body.book_id, req.user_id);
+  if (!checked[1]) return res.status([0]).json({ message: "데이터에 접근할 수 없습니다." });
 
-export const editBook = (req, res) => {
-  const book = new Library({
+  const library = new Library({
     title: req.body.title,
     subtitle: req.body.subtitle,
     author: req.body.author,
@@ -64,18 +64,18 @@ export const editBook = (req, res) => {
     create_date: req.body.create_date,
     edit_date: new Date(),
   });
-  book
+
+  library
     .editOne(req.params.id)
-    .then(() => {
-      res.send("해당 개체를 수정하였습니다.");
-    })
-    .catch((err) => res.send(err));
+    .then(() => res.status(200).json({ message: "데이터 수정에 성공하였습니다." }))
+    .catch(() => res.status(500).json({ message: "데이터 수정에 실패하였습니다." }));
 };
 
-export const searchBooks = (req, res) => {
-  Library.findByWord(req.params.word)
-    .then((items) => {
-      res.send(items);
-    })
-    .catch((err) => res.send(err));
+export const deleteBook = async (req, res) => {
+  const checked = await Library.checkBookIdByUserId(req.body.book_id, req.user_id);
+  if (!checked[1]) return res.status([0]).json({ message: "데이터에 접근할 수 없습니다." });
+
+  Library.deleteOne(req.params.id)
+    .then(() => res.status(200).json({ message: "데이터를 삭제하였습니다." }))
+    .catch(() => res.status(500).json({ message: "데이터 삭제에 실패하였습니다." }));
 };

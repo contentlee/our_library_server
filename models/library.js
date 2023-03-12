@@ -1,69 +1,46 @@
-import { getDb } from "../utils/database";
+import { getDb } from "../libs/database";
 
 export class Library {
   constructor(info) {
     this.info = info;
+    this.db = getDb();
   }
 
-  findCount() {
-    const db = getDb();
-    return db
-      .collection("counter")
-      .findOne({
-        name: "book",
-      })
-      .then((res) => {
-        this.info._id = res.totalPost + 1;
-      })
-      .catch(() => console.log("book id를 불러오는데 실패하였습니다."));
-  }
-
-  increaseCount() {
-    const db = getDb();
-    return db
-      .collection("counter")
-      .updateOne(
-        {
-          name: "book",
-        },
-        {
-          $inc: {
-            totalPost: 1,
-          },
-        }
-      )
-      .then((res) => res)
-      .catch((err) => console.log("book id를 저장하는데 실패하였습니다."));
-  }
-
-  static fetchAll() {
+  static checkBookIdByUserId(book_id, user_id) {
     const db = getDb();
     return db
       .collection("books")
-      .find()
-      .toArray()
-      .then((res) => res)
-      .catch((err) => console.log("데이터를 가져오는데 실패하였습니다."));
+      .findOne({ _id: parseInt(book_id) })
+      .then((data) => {
+        if (data.user_id !== user_id) return [403, false];
+        return [200, true];
+      })
+      .catch(() => [500, false]);
+  }
+
+  increaseCount() {
+    return this.db.collection("counter").findOneAndUpdate(
+      {
+        name: "book",
+      },
+      {
+        $inc: {
+          count: 1,
+        },
+      }
+    );
+  }
+
+  static findAll() {
+    const db = getDb();
+    return db.collection("books").find().toArray();
   }
 
   static findById(id) {
     const db = getDb();
-    return db
-      .collection("books")
-      .findOne({
-        _id: parseInt(id),
-      })
-      .then((res) => res)
-      .catch((err) => console.log(err));
-  }
-
-  static deleteOne(id) {
-    const db = getDb();
-    return db
-      .collection("books")
-      .deleteOne({ _id: parseInt(id) })
-      .then((res) => res)
-      .catch((err) => console.log(err));
+    return db.collection("books").findOne({
+      _id: parseInt(id),
+    });
   }
 
   static findByWord(word) {
@@ -71,7 +48,7 @@ export class Library {
     const condition = [
       {
         $search: {
-          index: "search_book",
+          index: "default",
           text: {
             query: word,
             path: ["title", "subtitle", "author", "publisher"],
@@ -79,43 +56,18 @@ export class Library {
         },
       },
     ];
-    return db
-      .collection("books")
-      .aggregate(condition)
-      .toArray()
-      .then((res) => {
-        return res;
-      })
-      .catch(() => {
-        console.log();
-      });
+    return db.collection("books").aggregate(condition).toArray();
   }
 
   createOne() {
-    const db = getDb();
-    return this.findCount()
-      .then(() => {
-        return db
-          .collection("books")
-          .insertOne(this.info)
-          .then((res) => res)
-          .catch((err) => console.log(err));
-      })
-      .then((res) => {
-        this.increaseCount();
-        return res;
-      })
-      .catch((err) => console.log(err));
+    return this.db.collection("books").insertOne(this.info);
   }
 
   editOne(id) {
-    const db = getDb();
-    return db
-      .collection("books")
-      .updateOne({ _id: parseInt(id) }, { $set: this.info })
-      .then((res) => res)
-      .catch((err) => {
-        console.log(err, "model");
-      });
+    return this.db.collection("books").updateOne({ _id: parseInt(id) }, { $set: this.info });
+  }
+
+  static deleteOne(id) {
+    return this.db.collection("books").deleteOne({ _id: parseInt(id) });
   }
 }
