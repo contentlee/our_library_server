@@ -24,9 +24,9 @@ class User {
   }
 
   async createOne() {
-    this.user.authority = "general";
-    this.user.pwd = encrypt(this.user.pwd);
-    return this.db.collection("user").insertOne(this.user);
+    this.user_info.authority = "general";
+    this.user_info.pwd = encrypt(this.user_info.pwd);
+    return this.db.collection("user").insertOne(this.user_info);
   }
 
   static changeName(user_id, new_name) {
@@ -34,10 +34,10 @@ class User {
     return db.collection("user").updateOne({ user_id: user_id }, { $set: { user_name: new_name } });
   }
 
-  changePwd() {
+  changePwd(new_pwd) {
     return this.db
       .collection("user")
-      .updateOne({ user_id: this.user_info.user_id }, { $set: { pwd: this.user_info.pwd } });
+      .updateOne({ user_id: this.user_info.user_id }, { $set: { pwd: this.user_info.new_pwd } });
   }
 }
 

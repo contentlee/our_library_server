@@ -3,6 +3,10 @@ import User from "../models/user";
 import jwt from "jsonwebtoken";
 import { encrypt } from "../utils/encrypt";
 
+export const getName = (req, res) => {
+  return res.status(200).json({ user_name: req.user_name });
+};
+
 export const signIn = (req, res) => {
   const user = new User(req.body);
   user
@@ -34,22 +38,29 @@ export const signUp = async (req, res) => {
 };
 
 export const changeUserName = (req, res) => {
-  User.changeName(req.body.user_id, req.body.new_name)
-    .then(() => res.status(200).json({ message: "사용자명 변경에 성공하였습니다." }))
+  User.changeName(req.user_id, req.body.new_name)
+    .then(() => {
+      const token = jwt.sign({ user_id: req.user_id, user_name: req.body.new_name }, process.env.TOKEN_SECRET_KEY, {
+        expiresIn: "1h",
+      });
+
+      return res.status(200).json({ token: token, message: "사용자명 변경에 성공하였습니다." });
+    })
     .catch(() => res.status(500).json({ message: "사용자명 변경에 실패하였습니다." }));
 };
 
 export const changeUserPwd = (req, res) => {
+  req.body.user_id = req.user_id;
   const user = new User(req.body);
   user
-    .findOne()
-    .then(async (data) => {
-      const cur_enc_pwd = await encrypt(user.user_info.pwd);
-      const new_enc_pwd = await encrypt(user.new_pwd);
+    .findById()
+    .then((data) => {
+      const cur_enc_pwd = encrypt(user.user_info.pwd);
+      const new_enc_pwd = encrypt(user.user_info.new_pwd);
       if (data.pwd !== cur_enc_pwd) return res.status(400).json({ message: "비밀번호가 일치하지 않습니다." });
       if (cur_enc_pwd == new_enc_pwd)
         return res.status(400).json({ message: "현재 비밀번호와 변경될 비밀번호가 같습니다." });
-      user.user_info.pwd = new_enc_pwd;
+      user.user_info.new_pwd = new_enc_pwd;
 
       user
         .changePwd()

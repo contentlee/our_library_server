@@ -61,6 +61,11 @@ class Comment {
     const db = getDb();
     return db.collection("comments").deleteOne({ _id: parseInt(comment_id) });
   }
+
+  static deleteMany(condition) {
+    const db = getDb();
+    return db.collection("comments").deleteMany(condition);
+  }
 }
 
 export default Comment;

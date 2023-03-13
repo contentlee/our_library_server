@@ -8,7 +8,18 @@ export const getBooks = (req, res) => {
 
 export const getBook = (req, res) => {
   Library.findById(parseInt(req.params.id))
-    .then((data) => res.status(200).json({ message: "데이터를 가져오는데 성공했습니다.", data: data }))
+    .then((data) => {
+      if (req.user_id) {
+        data.edit_authority = data.user_id === req.user_id;
+      } else {
+        data.edit_authority = false;
+      }
+
+      return res.status(200).json({
+        message: "데이터를 가져오는데 성공했습니다.",
+        data: data,
+      });
+    })
     .catch(() => res.status(500).json({ message: "데이터를 가져오는데 실패하였습니다." }));
 };
 
@@ -48,8 +59,11 @@ export const addBook = (req, res) => {
 };
 
 export const editBook = async (req, res) => {
-  const checked = await Library.checkBookIdByUserId(req.body.book_id, req.user_id);
-  if (!checked[1]) return res.status([0]).json({ message: "데이터에 접근할 수 없습니다." });
+  const checked = await Library.checkBookIdByUserId(req.body._id, req.user_id);
+
+  if (!checked[1]) {
+    return res.status(checked[0]).json({ message: "데이터에 접근할 수 없습니다." });
+  }
 
   const library = new Library({
     title: req.body.title,

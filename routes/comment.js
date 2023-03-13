@@ -6,11 +6,11 @@ import {
   getCommentsByBookId,
   getCommentsByUserId,
 } from "../controllers/comment";
-import { auth } from "../midleware/auth";
+import { auth, getUserId } from "../midleware/auth";
 
 const router = Router();
 
-router.get("/comment/book/:book_id", getCommentsByBookId);
+router.get("/comment/book/:book_id", getUserId, getCommentsByBookId);
 router.get("/comment/user", getCommentsByUserId);
 router.post("/comment/add", auth, addComment);
 router.put("/comment/edit/:comment_id", auth, editComment);

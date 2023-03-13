@@ -21,7 +21,7 @@ app.use(methodOverride("_method"));
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", process.env.ORIGIN_SUB_DOMAIN);
-  res.header("Access-Control-Allow-Methods", "OPTION, GET, PUT, POST, DELETE");
+  res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
   next();
 });

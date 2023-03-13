@@ -2,8 +2,8 @@ import Favorite from "../models/favorite";
 
 export const getFavoriteIds = (req, res) => {
   Favorite.findIds(req.user_id)
-    .then((data) => res.status(200).json({ message: "배열을 가져오는데 성공하였습니다.", data: data }))
-    .catch(() => res.status(500).json({ message: "배열을 가져오는데 실패하였습니다." }));
+    .then((data) => res.status(200).json({ message: "배열을 가져오는데 성공하였습니다.", data: data.favorite_books }))
+    .catch(() => res.status(500).json({ message: "배열을 가져오는데 실패하였습니다.", public: true }));
 };
 
 export const getFavoriteBooks = (req, res) => {
