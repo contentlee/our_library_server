@@ -8,6 +8,9 @@ export const getName = (req, res) => {
 };
 
 export const signIn = (req, res) => {
+  if (req.body.user_id.length < 3 || req.body.user_id.length > 10)
+    return res.status(400).json({ message: "아이디의 글자수를 확인해주세요.(3~10자)" });
+
   const user = new User(req.body);
   user
     .findById()
@@ -24,6 +27,11 @@ export const signIn = (req, res) => {
 };
 
 export const signUp = async (req, res) => {
+  if (req.body.user_id.length < 3 || req.body.user_id.length > 10)
+    return res.status(400).json({ message: "아이디의 글자수를 확인해주세요.(3~10자)" });
+  if (req.body.user_name.length < 3 || req.body.user_name.length > 10)
+    return res.status(400).json({ message: "닉네임의 글자수를 확인해주세요.(3~10자)" });
+
   const user = new User(req.body);
   if (!(await user.checkDuplication({ user_id: user.user_info.user_id }))) {
     return res.status(400).json({ message: "중복된 아이디가 존재합니다." });

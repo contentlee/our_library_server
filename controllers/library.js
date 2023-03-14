@@ -30,14 +30,18 @@ export const searchBooks = (req, res) => {
 };
 
 export const addBook = (req, res) => {
+  const {
+    body: { title, subtitle, author, date_of_publication, publisher, img, description },
+  } = req;
+
   const library = new Library({
-    title: req.body.title,
-    subtitle: req.body.subtitle,
-    author: req.body.author,
-    date_of_publication: new Date(req.body.date_of_publication),
-    publisher: req.body.publisher,
-    img: req.body.img,
-    description: req.body.description,
+    title: title,
+    subtitle: subtitle,
+    author: author,
+    date_of_publication: new Date(date_of_publication),
+    publisher: publisher,
+    img: img,
+    description: description,
     user_id: req.user_id,
     user_name: req.user_name,
     create_date: new Date(),
@@ -59,23 +63,25 @@ export const addBook = (req, res) => {
 };
 
 export const editBook = async (req, res) => {
-  const checked = await Library.checkBookIdByUserId(req.body._id, req.user_id);
+  const checked = await Library.checkBookIdByUserId(req.params.id, req.user_id);
 
   if (!checked[1]) {
     return res.status(checked[0]).json({ message: "데이터에 접근할 수 없습니다." });
   }
-
+  const {
+    body: { title, subtitle, author, date_of_publication, publisher, img, description, create_date },
+  } = req;
   const library = new Library({
-    title: req.body.title,
-    subtitle: req.body.subtitle,
-    author: req.body.author,
-    date_of_publication: req.body.date_of_publication,
-    publisher: req.body.publisher,
-    img: req.body.img,
-    description: req.body.description,
+    title: title,
+    subtitle: subtitle,
+    author: author,
+    date_of_publication: date_of_publication,
+    publisher: publisher,
+    img: img,
+    description: description,
     user_id: req.user_id,
     user_name: req.user_name,
-    create_date: req.body.create_date,
+    create_date: create_date,
     edit_date: new Date(),
   });
 
@@ -86,8 +92,8 @@ export const editBook = async (req, res) => {
 };
 
 export const deleteBook = async (req, res) => {
-  const checked = await Library.checkBookIdByUserId(req.body.book_id, req.user_id);
-  if (!checked[1]) return res.status([0]).json({ message: "데이터에 접근할 수 없습니다." });
+  const checked = await Library.checkBookIdByUserId(req.params.id, req.user_id);
+  if (!checked[1]) return res.status(checked[0]).json({ message: "데이터에 접근할 수 없습니다." });
 
   Library.deleteOne(req.params.id)
     .then(() => res.status(200).json({ message: "데이터를 삭제하였습니다." }))

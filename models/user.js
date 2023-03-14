@@ -34,7 +34,7 @@ class User {
     return db.collection("user").updateOne({ user_id: user_id }, { $set: { user_name: new_name } });
   }
 
-  changePwd(new_pwd) {
+  changePwd() {
     return this.db
       .collection("user")
       .updateOne({ user_id: this.user_info.user_id }, { $set: { pwd: this.user_info.new_pwd } });

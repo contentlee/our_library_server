@@ -68,6 +68,7 @@ export class Library {
   }
 
   static deleteOne(id) {
-    return this.db.collection("books").deleteOne({ _id: parseInt(id) });
+    const db = getDb();
+    return db.collection("books").deleteOne({ _id: parseInt(id) });
   }
 }
