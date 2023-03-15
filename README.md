@@ -1,4 +1,4 @@
-# 우리의 도서(서버)
+# 우리의 도서관(서버)
 
 “우리만” 쓸 수 있는 간단한 도서 커뮤니티입니다.
 
@@ -9,16 +9,12 @@ For building and running the app you need:
 - Node.js 18.12.1
 - Yarn 1.22.19
 
-<br/>
-
 ## Script
 
 ```
   $ yarn install
   $ yarn start
 ```
-
-<br/>
 
 ## Stack
 
