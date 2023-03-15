@@ -1,12 +1,10 @@
-const config = {
+module.exports = {
   apps: [
     {
       name: "app",
-      script: "./app.js",
+      script: "./server-register.js",
       instances: 0,
       exec_mode: "cluster",
     },
   ],
 };
-
-export default config;
