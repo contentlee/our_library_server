@@ -33,5 +33,5 @@ app.use(CommentRouter);
 
 connectDb(() => {
   app.listen(8080);
-  console.log("test");
+  console.log("connected");
 });
