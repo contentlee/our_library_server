@@ -13,11 +13,10 @@ For building and running the app you need:
 
 ## Script
 
-<code>
+```
   $ yarn install
-  <br/>
   $ yarn start
-</code>
+```
 
 <br/>
 
